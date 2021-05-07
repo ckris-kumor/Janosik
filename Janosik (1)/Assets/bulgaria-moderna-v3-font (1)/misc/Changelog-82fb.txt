@@ -1,0 +1,198 @@
+﻿
+-------------- Version 2 ----------------
+
+
+Kerning improvements
+
+Added Cyrillic Characters Lje, Nje, Dzhe, Dje, Tshe
+
+Flipped the lowercase "g"
+
+Added a section sign (§)
+
+Added brackets (taken from the Less-than and More-than signs)
+
+Added guillemets (angle quotes, made as double brackets)
+
+Added Numero sign (№)
+
+Added Copyright sign (©)
+
+Added Registered Sign (®)
+
+Added Plus-Minus Sign (±)
+
+Added a Masculine Ordinal indicator (º)
+
+Added a Feminine Ordinal indicator (ª)
+
+Added Inverted Question Mark (¿)
+
+Redesigned the Vulgar Fraction One Quarter (¼), Vulgar Fraction One Half (½) and the Vulgar Fraction Three Quarters (¾) signs.
+
+Added curly brackets ({})
+
+Added a Dagger (†) and a Double Dagger (‡) symbols
+
+Added a Number Sign (#)
+
+Added an Ampersand (&)
+
+Added Per Mile Sign (‰)
+
+Added a Currency Sign (¤)
+
+Redesigned the Ukrainian Ye (Єє)
+
+Added OE grapheme (Œœ)
+
+Fixed Ţţ, Ľľ, Īī, Őő
+
+Added Inverted Exlamation Mark (¡)
+
+
+-------------- Version 3 ----------------
+
+
+A redesigned lowercase "m"
+
+Added the entire set of Greek characters
+
+Added Yen sign (¥)
+
+Added Cent sign (¢)
+
+Added a Division Slash (
+ ∕ ) - same as the normal slash
+
+Added a Soft Hyphen (-) - same as the en dash
+
+Added a Interpunct (BUllet operator) (·)
+
+Added a Modifier Letter Macron (ˉ)
+
+Added Cyrillic Komi De (Ԁԁ)
+
+Added Cyrillic Komi Sje (Ԍ) - capital only
+
+Added Cyrillic Ye with grave (Ѐѐ) - lowercase already exists
+
+Added Cyrillic I with grave (Ѝѝ) - lowercase already exists
+
+Added Cyrillic Yery with diaeresis (Ӹӹ)
+
+Added Cyrillic Che with diaeresis (Ӵӵ)
+
+Added Cyrillic U with diaeresis (Ӱӱ)
+
+Added Cyrillic E with diaeresis (Ӭӭ)
+
+Added Cyrillic O with diaeresis (Ӧӧ)
+
+Added Cyrillic I with diaeresis (Ӥӥ)
+
+Added Cyrillic Ze with diaeresis (Ӟӟ)
+
+Added Cyrillic Zhe with diaeresis (Ӝӝ)
+
+Added Cyrillic A with diaeresis (Ӓӓ)
+
+Added Cyrillic AE digraph (Ӕӕ)
+
+Added Cyrillic I with macron (Ӣӣ)
+
+Added Cyrillic U with macron (Ӯӯ)
+
+Added Cyrillic Ye with breve (Ӗӗ)
+
+Added Cyrillic A with breve (Ӑӑ)
+
+Added Cyrillic Zhe with breve (Ӂӂ)
+
+Added Cyrillic Palochka (Ӏӏ)
+
+Added Cyrillic Ue (Үү)
+
+Added Cyrillic Shha (Һһ)
+ 
+Added Cyrillic Oe (Өө)
+
+Added Cyrillic Oe with diaeresis (Ӫӫ)
+
+Added SINGLE HIGH-REVERSED-9 QUOTATION MARK (‛)
+
+Added DOUBLE HIGH-REVERSED-9 QUOTATION MARK (‟)
+
+Added DOUBLE EXCLAMATION MARK (‼)
+
+Added DOUBLE QUESTION MARK (⁇)
+
+Added QUESTION EXCLAMATION MARK (⁈)
+
+Added EXCLAMATION QUESTION MARK (⁉)
+
+Added Euro sign (€)
+
+Added Latin E-breve (Ĕĕ)
+
+Added Latin L with a middle dot (Ŀŀ)
+
+Added Latin O-breve (Ŏŏ)
+
+Added Latin I-breve (Ĭĭ)
+
+Added IJ digraph (Ĳĳ)
+
+Added K with caron (Ǩǩ)
+
+Added G with caron (Ǧǧ)
+
+Added O with caron (Ǒǒ)
+
+Added A with caron (Ǎǎ)
+
+Added I with caron (Ǐǐ)
+
+Added U with caron (Ǔǔ)
+
+Fixed T with cedulla (Ţţ)
+
+Added T with comma (Țț)
+
+Added CYRILLIC CAPITAL LETTER U WITH DOUBLE ACUTE (Ӳӳ)
+
+Added O with ogonek (Ǫǫ)
+
+Added AE with macron (Ǣǣ)
+
+Added AE with grave (Ǽǽ)
+
+Added O with stroke and acute (Ǿǿ)
+
+Added N with grave (Ǹǹ)
+
+Added G with acute (Ǵǵ)
+
+Added U with inverted breve (Ȗȗ)
+
+Added R with inverted breve (Ȓȓ)
+
+Added O with inverted breve (Ȏȏ)
+
+Added I with inverted breve (Ȋȋ)
+
+Added E with inverted breve (Ȇȇ)
+
+Added A with inverted breve (Ȃȃ)
+
+Added E with cedilla (Ȩȩ)
+
+Added O with dot above (Ȯȯ)
+
+Added A with dot above (Ȧȧ)
+
+Added digraphs (Ǳ ǲ ǳ Ǌ ǋ ǌ Ǉ ǈ ǉ)
+
+Added Y with macron (Ȳȳ)
+
+Added characters A, E, I, O, R, U with double grave (ȀȁȄȅȈȉȌȍȐȑȔȕ)
