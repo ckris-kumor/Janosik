@@ -290,7 +290,6 @@ MonoBehaviour:
   muzzleSoundSource: {fileID: 0}
   playerCam: {fileID: 0}
   initVelocity: 100
-  speed: 0
   muzzleFlashPartSys: {fileID: 6617406101802919536}
 --- !u!1001 &6617406101817735604
 PrefabInstance:

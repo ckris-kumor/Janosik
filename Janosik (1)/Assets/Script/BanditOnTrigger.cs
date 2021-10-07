@@ -17,8 +17,7 @@ public class BanditOnTrigger : MonoBehaviour{
    
 
     void OnCollisionEnter(Collision other){
-        if (other.gameObject.CompareTag("Bullet"))
-        {
+        if (other.gameObject.CompareTag("Bullet")){
             if ((banditInfo.Gethp() - 10) <= 0){
                 if(banditInfo.GethasGold())
                     carriage.GetComponent<CarriageGold>().DepositGold();

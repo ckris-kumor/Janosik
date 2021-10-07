@@ -23,6 +23,8 @@ TagManager:
   - Musket
   - FxTemporaire
   - Treasure Chest
+  - playerBody
+  - Tree
   layers:
   - Default
   - TransparentFX

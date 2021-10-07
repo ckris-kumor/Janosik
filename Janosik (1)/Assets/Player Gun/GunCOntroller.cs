@@ -11,17 +11,16 @@ public class GunCOntroller : MonoBehaviour{
     [SerializeField] private ParticleSystem muzzleFlashPartSys;
     private GameObject spawnedBullet;
     void Start(){
-        playerCam = gameObject.transform.parent.gameObject.GetComponentInChildren<Camera>();
         muzzleFlashPartSys = gameObject.GetComponentInChildren<ParticleSystem>();
         muzzleSoundSource = gameObject.GetComponentInChildren<AudioSource>();
     }
     void Update(){
-        gameObject.transform.up = -playerCam.transform.forward;
+        //gameObject.transform.LookAt(playerCam.transform, -gameObject.transform.rotation.eulerAngles);
         if(Input.GetButtonDown("Fire1")){
             muzzleFlashPartSys.Play();
             muzzleSoundSource.Play();
             spawnedBullet = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.identity);
-            spawnedBullet.GetComponent<Rigidbody>().velocity = initVelocity*bulletSpawn.forward;
+            spawnedBullet.GetComponent<Rigidbody>().AddRelativeForce(initVelocity*playerCam.transform.forward);
             Destroy(spawnedBullet, 5.00f);
             spawnedBullet = null;
        
