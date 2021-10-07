@@ -5,76 +5,60 @@ using UnityEngine.AI;
 using UnityEngine.UI;
 
 
-public class MovingBandit : MonoBehaviour
-{
-    
-    NavMeshAgent BanditMeshAgent;
-    GameObject Bandit;
-    GameObject carriage;
-    SphereCollider CarriagePlayerDetection;
-    SphereCollider BanditBaseCollider;
-    public Text BanditGoldText;
-    float BanditSpeed;
-    
-        // Start is called before the first frame update
-    public void Start()
-    {
-        Bandit = GameObject.FindGameObjectWithTag("Bandit");
+public class MovingBandit : MonoBehaviour{
+    //[SerializeField] private NavMeshAgent BanditMeshAgent;
+    [SerializeField] private GameObject carriage;
+    [SerializeField] private Transform carriageBack;
+    [SerializeField] private SphereCollider banditSphere;
+    [SerializeField] private Vector3 banditHideOutLoc;
+    [SerializeField] private AtSpawn banditInfo;
+    [SerializeField] private UpdateBanditsGold banditGold;
+    [SerializeField] private Animator banditAnimator;
+    [SerializeField] private float BanditSpeed;
+    // Start is called before the first frame update
+    void Start(){
         carriage = GameObject.FindGameObjectWithTag("Carriage");
-        BanditMeshAgent = gameObject.GetComponent<NavMeshAgent>();
-        CarriagePlayerDetection = carriage.GetComponent<SphereCollider>();
-        BanditBaseCollider = GameObject.FindGameObjectWithTag("BanditBase").GetComponent<SphereCollider>();
-        BanditGoldText = GameObject.FindGameObjectWithTag("BanditGoldTextField").GetComponent<Text>();        
+        carriageBack = carriage.transform.Find("WagonBack");
+        banditAnimator = gameObject.GetComponent<Animator>();
+        //BanditMeshAgent = gameObject.GetComponent<NavMeshAgent>();
+        banditSphere = gameObject.GetComponentInChildren<SphereCollider>();
+        banditInfo = gameObject.GetComponent<AtSpawn>();
+        banditHideOutLoc = GameObject.FindGameObjectWithTag("BanditBase").transform.Find("Bandit's Stash").gameObject.GetComponent<SphereCollider>().bounds.center;
+        banditGold = GameObject.FindGameObjectWithTag("Player").transform.Find("Camera").gameObject.GetComponentInChildren<UpdateBanditsGold>();        
         //BanditMeshAgent.Warp(BanditBaseCollider.transform.position);
-        BanditSpeed = BanditMeshAgent.speed * 0.1f;
-
+        
     }
     // Update is called once per frame
-   public void Update()
-    {
-        //Debug.Log(CarriagePlayerDetection.bounds.Contains(Bandit.transform.position));
-        if(!(CarriagePlayerDetection.bounds.Contains(Bandit.transform.position)) && !(Bandit.GetComponent<AtSpawn>().GethasGold()))
-        {
+    void Update(){
+        banditAnimator.SetFloat("forwardSpeed", Mathf.Abs(transform.forward.z));
+        banditAnimator.SetFloat("turnSpeed", transform.forward.x);
+        bool atCarriage = banditSphere.bounds.Contains(carriageBack.position);
+        bool atBase = banditSphere.bounds.Contains(banditHideOutLoc);
+        bool hasGold = banditInfo.GethasGold();
+        if(!atCarriage && !hasGold){
             //Debug.Log("We are moving toward the carriage.");
-            Bandit.transform.LookAt(carriage.transform.position, Vector3.up);
-            Bandit.transform.position = Vector3.MoveTowards(Bandit.transform.position, carriage.transform.position, BanditSpeed);
-            
+            transform.LookAt(carriageBack.position, Vector3.up);
+            transform.position = Vector3.MoveTowards(gameObject.transform.position, carriageBack.position, BanditSpeed);
         }
-
-        else if (CarriagePlayerDetection.bounds.Contains(Bandit.transform.position) && !(Bandit.GetComponent<AtSpawn>().GethasGold()))
-        {
+        else if(atCarriage && !hasGold){
             //Debug.Log("THe Bandit has stolen gold.");
             carriage.GetComponent<CarriageGold>().StealGold();
-            Bandit.GetComponent<AtSpawn>().SethasGold(true);
-
-
+            banditInfo.SethasGold(true);
         }
-
-        else if (!(CarriagePlayerDetection.bounds.Contains(gameObject.transform.position)) && (Bandit.GetComponent<AtSpawn>().GethasGold())&& !(BanditBaseCollider.bounds.Contains(Bandit.transform.position)))
-        {
+        else if(!atBase && hasGold){
             //Debug.Log("On the way back to the base.");
-            Bandit.transform.LookAt(BanditBaseCollider.transform.position, Vector3.up);
-            Bandit.transform.position = Vector3.MoveTowards(Bandit.transform.position, BanditBaseCollider.transform.position, BanditSpeed);
-            
+            transform.LookAt(banditHideOutLoc, Vector3.up);
+            transform.position = Vector3.MoveTowards(transform.position, banditHideOutLoc, BanditSpeed);
         }
-
-        else if(!(CarriagePlayerDetection.bounds.Contains(gameObject.transform.position)) && (Bandit.GetComponent<AtSpawn>().GethasGold()) && (BanditBaseCollider.bounds.Contains(Bandit.transform.position)))
-        {
+        else if(atBase && hasGold){
             //Debug.Log("Depositing Gold!");
-            BanditGoldText.GetComponent<UpdateBanditsGold>().DepositGold();
-            Bandit.GetComponent<AtSpawn>().SethasGold(false);
+            banditGold.DepositGold();
+            banditInfo.SethasGold(false);
         }
-
-        else if (!(CarriagePlayerDetection.bounds.Contains(gameObject.transform.position)) && (BanditBaseCollider.bounds.Contains(gameObject.transform.position))  && !(Bandit.GetComponent<AtSpawn>().GethasGold()))
-        {
+        else if(atBase && !hasGold){
             //Debug.Log("Get back to the carriage!");
-            Bandit.transform.LookAt(carriage.transform.position, Vector3.up);
-            Bandit.transform.position = Vector3.MoveTowards(Bandit.transform.position, carriage.transform.position, BanditSpeed);
-            
-            
+            transform.LookAt(carriageBack.position, Vector3.up);
+            transform.position = Vector3.MoveTowards(transform.position, carriageBack.position, BanditSpeed);
         }
-
-
-
     }
 }

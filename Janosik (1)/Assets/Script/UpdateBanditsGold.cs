@@ -2,36 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class UpdateBanditsGold : MonoBehaviour
-{
-    int numGold;
-    public Text BanditGoldText;
-    // Start is called before the first frame update
-    void Start()
-    {
-        numGold = 0;
-        BanditGoldText.text = BanditGoldText.text = "Bandits: " + numGold;
+public class UpdateBanditsGold : MonoBehaviour{
+    private float numGold;
+    [SerializeField] private ProgressBar banditGoldProgressBar;
+    [SerializeField] private GameObject carriage;
+    void UpdateProgressBar(){
+        banditGoldProgressBar.UpdateValue(numGold/(carriage.GetComponent<CarriageGold>().GetGoldAmnt()+numGold));
     }
+    // Start is called before the first frame update
+    void Start(){
+        carriage = GameObject.FindWithTag("Carriage");
+        banditGoldProgressBar = gameObject.GetComponent<ProgressBar>();
+        numGold = 0;
+        Debug.Log("Bandit Gold ");
+        UpdateProgressBar();
 
-
-
-    public int GetnumGold()
-    {
-        
+    }
+    public float GetnumGold(){
         return numGold;
     }
-
-    public void DepositGold()
-    {
+    public void DepositGold(){
         numGold += 1;
-        BanditGoldText.text = "Bandits: " + numGold;
+        UpdateProgressBar();
         
     }
-
-    public void WithdrawGold()
-    {
+    public void WithdrawGold(){
         numGold -= 1;
-        BanditGoldText.text = "Bandits: " + numGold;
+        UpdateProgressBar();
     }
 
 }

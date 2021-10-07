@@ -20,6 +20,9 @@ TagManager:
   - Barrel
   - UI
   - Gold Bar
+  - Musket
+  - FxTemporaire
+  - Treasure Chest
   layers:
   - Default
   - TransparentFX

@@ -36,8 +36,6 @@ public class ProjetileRayCast : MonoBehaviour
         rayCamera.transform.forward = playerCamera.transform.forward;
         ray = rayCamera.ScreenPointToRay(Input.mousePosition);
         //Gun.transform.LookAt(rayCamera.transform.forward, Vector3.forward);
-
-  
         if (Input.GetMouseButtonDown(0) && (playerAmmo > 0))
         {
 

@@ -13,8 +13,8 @@ public class GameResults : MonoBehaviour
     // Start is called before the first frame update
     public void Awake()
     {
-        BanditsGold = GameStats.BanditGold;
-        GuardsGold = GameStats.GuardGold;
+        BanditsGold = 0;
+        GuardsGold = 0;
         KillCountText.text = "Kills: " + GameStats.killCount;
     }
     // Update is called once per frame

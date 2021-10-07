@@ -228,6 +228,7 @@ Transform:
   - {fileID: 1947239510897349928}
   - {fileID: 1947239511710189605}
   - {fileID: 1947239511879237626}
+  - {fileID: 1679907994401206098}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -258,8 +259,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3.2003043
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 1.21
+  m_Center: {x: 0, y: 0, z: -2.15}
 --- !u!195 &1947239511113890597
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -335,6 +336,7 @@ MonoBehaviour:
   - {fileID: 0}
   goldAmmount: 4
   PlayerPrompt: {fileID: 0}
+  playerInfo: {fileID: 0}
 --- !u!1 &1947239511710189606
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,3 +625,33 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!1 &3485170949534771928
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1679907994401206098}
+  m_Layer: 12
+  m_Name: WagonBack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1679907994401206098
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3485170949534771928}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.028, y: 0, z: -2.55}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1947239511113890595}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

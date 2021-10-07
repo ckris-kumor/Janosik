@@ -4,39 +4,32 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
-public class BanditOnTrigger : MonoBehaviour
-{
-    GameObject Bandit;
-    SphereCollider BanditSpawn;
-    GameObject carriage;
+public class BanditOnTrigger : MonoBehaviour{
+    [SerializeField] private Transform BanditSpawn;
+    [SerializeField] private GameObject carriage;
+    [SerializeField] private GameObject banditPrefab;
+    [SerializeField] private AtSpawn banditInfo;
+    void Start(){
+        BanditSpawn = GameObject.FindGameObjectWithTag("BanditBase").transform.Find("Bandit's Stash");
+        carriage = GameObject.FindGameObjectWithTag("Carriage");
+        banditInfo = gameObject.GetComponent<AtSpawn>();
+    }
    
 
-    public void OnCollisionEnter(Collision other)
-    {
-        BanditSpawn = GameObject.FindGameObjectWithTag("BanditBase").GetComponent<SphereCollider>();
-        carriage = GameObject.FindGameObjectWithTag("Carriage");
-
-
+    void OnCollisionEnter(Collision other){
         if (other.gameObject.CompareTag("Bullet"))
         {
-            if ((gameObject.GetComponent<AtSpawn>().Gethp() - 10) <= 0)
-            {
-                gameObject.GetComponent<AtSpawn>().Sethp(100);
-                if(gameObject.GetComponent<AtSpawn>().GethasGold())
-                {
+            if ((banditInfo.Gethp() - 10) <= 0){
+                if(banditInfo.GethasGold())
                     carriage.GetComponent<CarriageGold>().DepositGold();
-                }
-                gameObject.GetComponent<AtSpawn>().SethasGold(false);
-                
-                gameObject.GetComponent<NavMeshAgent>().Warp(BanditSpawn.transform.position);
+                banditInfo.SethasGold(false);
+                Instantiate(banditPrefab, BanditSpawn.position, Quaternion.identity);
                 GameStats.killCount++;
+                Destroy(gameObject);
             }
-
-
-            else if (gameObject.CompareTag("Bandit") && ((gameObject.GetComponent<AtSpawn>().Gethp() - 10) > 0))
-            {
-                gameObject.GetComponent<AtSpawn>().Sethp(gameObject.GetComponent<AtSpawn>().Gethp() - 10);
-                Debug.Log("bandit Hit , has " + gameObject.GetComponent<AtSpawn>().Gethp() + " left.");
+            else if ((banditInfo.Gethp() - 10) > 0){
+                banditInfo.Sethp(banditInfo.Gethp() - 10);
+                Debug.Log("bandit Hit , has " + banditInfo.Gethp() + " left.");
             }
 
         }
