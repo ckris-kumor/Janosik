@@ -20,47 +20,35 @@ public class ProjetileRayCast : MonoBehaviour
 
     private AtSpawn playerController;
 
-    public void Start()
-    {
+    public void Start(){
         playerController = gameObject.GetComponentInParent<AtSpawn>();
         magSize = 12;
         
     }
-
-
-    // Update is called once per frame
-    public void Update()
-    {
+     // Update is called once per frame
+    public void Update(){
         playerAmmo = playerController.GetCurrAmmo();
         maxAmmo = playerController.GetMaxAmmo();
         rayCamera.transform.forward = playerCamera.transform.forward;
         ray = rayCamera.ScreenPointToRay(Input.mousePosition);
         //Gun.transform.LookAt(rayCamera.transform.forward, Vector3.forward);
-        if (Input.GetMouseButtonDown(0) && (playerAmmo > 0))
-        {
-
+        if (Input.GetMouseButtonDown(0) && (playerAmmo > 0)){
             playerController.SetCurrAmmo(playerAmmo - 1);
             muzzleParticles.Play();
             GameObject firedBullet = Instantiate(bullet, bulletSpawnPos.position, Quaternion.identity);
             firedBullet.GetComponent<Rigidbody>().AddRelativeForce(ray.direction * speed);
             Destroy(firedBullet, 3.0f);
         }
-
-        else if (Input.GetKeyDown(KeyCode.R))
-        {
+        else if (Input.GetKeyDown(KeyCode.R)){
             int diff = magSize - playerAmmo;
-            
-            if (diff < maxAmmo)
-            {
+            if (diff < maxAmmo){
                 playerAmmo = magSize;
                 maxAmmo -= diff;
             }
-            else if (diff > maxAmmo && maxAmmo != 0)
-            {
+            else if (diff > maxAmmo && maxAmmo != 0){
                 playerAmmo += maxAmmo;
                 maxAmmo = 0;
             }
-
             playerController.SetCurrAmmo(playerAmmo);
             playerController.SetMaxAmmo(maxAmmo);
         }

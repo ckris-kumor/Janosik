@@ -3,27 +3,40 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GunCOntroller : MonoBehaviour{
+    [SerializeField] private float gunDamage, weaponRange, fireRate, hitForce, nextFire;
     [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private Transform bulletSpawn;
+    [SerializeField] private Transform muzzleTransform;
     [SerializeField] private AudioSource muzzleSoundSource;
-    [SerializeField] private Camera playerCam;
+    [SerializeField] private Camera playerCam;    
     [Tooltip("Initial Velocity of bullet leaving barrel.")] [SerializeField] private float initVelocity;
     [SerializeField] private ParticleSystem muzzleFlashPartSys;
     private GameObject spawnedBullet;
+    private RaycastHit hit;
+    private Vector3 rayOrigin;
     void Start(){
-        muzzleFlashPartSys = gameObject.GetComponentInChildren<ParticleSystem>();
-        muzzleSoundSource = gameObject.GetComponentInChildren<AudioSource>();
+        muzzleFlashPartSys = GetComponentInChildren<ParticleSystem>();
+        muzzleSoundSource = GetComponentInChildren<AudioSource>();
+        playerCam = transform.parent.GetComponentInChildren<Camera>();
+        muzzleTransform = transform.Find("MuzzleExit");
+        
     }
     void Update(){
-        //gameObject.transform.LookAt(playerCam.transform, -gameObject.transform.rotation.eulerAngles);
-        if(Input.GetButtonDown("Fire1")){
+        if(Input.GetButtonDown("Fire1") && Time.time > nextFire){
+            nextFire = Time.time + fireRate;
             muzzleFlashPartSys.Play();
             muzzleSoundSource.Play();
-            spawnedBullet = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.identity);
-            spawnedBullet.GetComponent<Rigidbody>().AddRelativeForce(initVelocity*playerCam.transform.forward);
-            Destroy(spawnedBullet, 5.00f);
-            spawnedBullet = null;
-       
+            GameObject bullet;
+            bullet = Instantiate(bulletPrefab, muzzleTransform.position, Quaternion.identity);
+            bullet.GetComponent<Rigidbody>().AddForce(initVelocity*playerCam.transform.forward.normalized);
+            rayOrigin = playerCam.ViewportToWorldPoint(new Vector3(0.5f,0.5f,0.0f));
+            Debug.DrawRay(rayOrigin, playerCam.transform.forward.normalized*weaponRange, Color.red);
+            if(Physics.Raycast(rayOrigin, playerCam.transform.forward.normalized, out hit, weaponRange)){
+                BanditOnTrigger banditHitBox = hit.transform.GetComponent<BanditOnTrigger>();
+                if(banditHitBox!=null)
+                    banditHitBox.HitByBullet(gunDamage, hit.point);
+                if(hit.rigidbody != null)
+                    hit.rigidbody.AddForce(-hit.normal*hitForce);
+            }
         }
     }
 }

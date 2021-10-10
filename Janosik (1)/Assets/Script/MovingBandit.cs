@@ -12,9 +12,10 @@ public class MovingBandit : MonoBehaviour{
     [SerializeField] private SphereCollider banditSphere;
     [SerializeField] private Vector3 banditHideOutLoc;
     [SerializeField] private AtSpawn banditInfo;
-    [SerializeField] private UpdateBanditsGold banditGold;
+    [SerializeField] private DepositLoot banditGold;
     [SerializeField] private Animator banditAnimator;
     [SerializeField] private float BanditSpeed;
+    [SerializeField] private Rigidbody banditRB;
     // Start is called before the first frame update
     void Start(){
         carriage = GameObject.FindGameObjectWithTag("Carriage");
@@ -24,9 +25,10 @@ public class MovingBandit : MonoBehaviour{
         banditSphere = gameObject.GetComponentInChildren<SphereCollider>();
         banditInfo = gameObject.GetComponent<AtSpawn>();
         banditHideOutLoc = GameObject.FindGameObjectWithTag("BanditBase").transform.Find("Bandit's Stash").gameObject.GetComponent<SphereCollider>().bounds.center;
-        banditGold = GameObject.FindGameObjectWithTag("Player").transform.Find("Camera").gameObject.GetComponentInChildren<UpdateBanditsGold>();        
+        banditGold = GameObject.FindGameObjectWithTag("BanditBase").GetComponent<DepositLoot>(); 
+        banditRB = gameObject.GetComponent<Rigidbody>();       
         //BanditMeshAgent.Warp(BanditBaseCollider.transform.position);
-        
+
     }
     // Update is called once per frame
     void Update(){
@@ -38,7 +40,10 @@ public class MovingBandit : MonoBehaviour{
         if(!atCarriage && !hasGold){
             //Debug.Log("We are moving toward the carriage.");
             transform.LookAt(carriageBack.position, Vector3.up);
-            transform.position = Vector3.MoveTowards(gameObject.transform.position, carriageBack.position, BanditSpeed);
+            if(!atCarriage)
+                transform.position = Vector3.MoveTowards(gameObject.transform.position, carriageBack.position, BanditSpeed);
+            else
+                banditRB.velocity = Vector3.zero;
         }
         else if(atCarriage && !hasGold){
             //Debug.Log("THe Bandit has stolen gold.");

@@ -6,8 +6,8 @@ public class AtSpawn : MonoBehaviour{
     public bool hasGold;
     public void Start(){
        this.hp = 100;
-       this.maxAmmo = 120;
-       curAmmo = 12;
+       this.maxAmmo = 20;
+       curAmmo = 1;
        this.hasGold = false;
     }
     public int GetCurrAmmo(){

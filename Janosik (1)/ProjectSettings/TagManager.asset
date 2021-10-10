@@ -25,6 +25,8 @@ TagManager:
   - Treasure Chest
   - playerBody
   - Tree
+  - AI
+  - Map
   layers:
   - Default
   - TransparentFX

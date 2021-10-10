@@ -4,19 +4,21 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class UpdateGuardsGold : MonoBehaviour{
-    [SerializeField] private GameObject carriage;
     [SerializeField] private ProgressBar guardGoldProgressBar;
+    [SerializeField] private CarriageGold carriageGoldInfo;
     private float banditGold, carriageGold;
+    [SerializeField] private DepositLoot banditGoldInfo;
     void UpdateProgressBar(){
-        banditGold = gameObject.transform.parent.Find("BanditGoldProgressBar").gameObject.GetComponent<UpdateBanditsGold>().GetnumGold();
-        carriageGold = carriage.GetComponent<CarriageGold>().GetGoldAmnt();
-        Debug.Log(carriageGold/(carriageGold+banditGold));
+        banditGold = banditGoldInfo.GetNumGold();
+        carriageGold = carriageGoldInfo.GetGoldAmnt();
+        GameStats.GuardsGold = (int)carriageGold;
         guardGoldProgressBar.UpdateValue(carriageGold/(carriageGold+banditGold));
     }
     // Start is called before the first frame update
     void Start(){
-        carriage = GameObject.FindWithTag("Carriage");
+        carriageGoldInfo = GameObject.FindWithTag("Carriage").GetComponent<CarriageGold>();
         guardGoldProgressBar = gameObject.GetComponent<ProgressBar>();
+        banditGoldInfo = GameObject.FindWithTag("BanditBase").transform.Find("Bandit's Stash").gameObject.GetComponent<DepositLoot>();
         UpdateProgressBar();    
     }
     // Update is called once per frame

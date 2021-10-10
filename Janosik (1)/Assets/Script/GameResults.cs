@@ -8,32 +8,26 @@ public class GameResults : MonoBehaviour
 {
    
     public Text GameResult;
-    int BanditsGold, GuardsGold;
     public Text KillCountText;
     // Start is called before the first frame update
     public void Awake()
     {
-        BanditsGold = 0;
-        GuardsGold = 0;
         KillCountText.text = "Kills: " + GameStats.killCount;
     }
     // Update is called once per frame
     public void Start()
     {
         Cursor.visible = true;
-        Debug.Log("Bandits had " + BanditsGold);
-        Debug.Log("Guards had " + GuardsGold);
-        if (BanditsGold < GuardsGold)
+        Debug.Log("Bandits had " + GameStats.BanditsGold);
+        Debug.Log("Guards had " + GameStats.GuardsGold);
+        if (GameStats.BanditsGold < GameStats.GuardsGold)
             GameResult.text = "Victory!";
-        else if (BanditsGold > GuardsGold)
+        else if (GameStats.BanditsGold > GameStats.GuardsGold)
             GameResult.text = "Defeat";
-        else if (BanditsGold == GuardsGold)
+        else if (GameStats.BanditsGold == GameStats.GuardsGold)
             GameResult.text = "Tie";
-
-
     }
-    public void Update()
-    {
+    public void Update(){
         Cursor.visible = true;
     }
 }

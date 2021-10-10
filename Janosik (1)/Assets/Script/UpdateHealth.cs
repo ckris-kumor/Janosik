@@ -5,21 +5,21 @@ using UnityEngine.UI;
 
 public class UpdateHealth : MonoBehaviour
 {
-    GameObject player;
-    GameObject HPTextField;
+    [SerializeField] private AtSpawn playerInfo;
+    [SerializeField] ProgressBar HPProgressBar;
  
     // Start is called before the first frame update
-    public void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Bandit");
-        HPTextField = GameObject.Find("HPTextField");
+    public void Start(){
         
+        playerInfo = GetComponentInParent<AtSpawn>();
+        HPProgressBar = GetComponent<ProgressBar>();
+        HPProgressBar.UpdateValue((float)(playerInfo.Gethp()/100));
+        
+
     }
 
     
-    void Update()
-    {
-        HPTextField.GetComponent<Text>().text = "Bandit HP: " + player.GetComponent<AtSpawn>().Gethp().ToString();
-        
+    void Update(){
+        HPProgressBar.UpdateValue((float)(playerInfo.Gethp()/100));
     }
 }

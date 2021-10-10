@@ -5,30 +5,20 @@ using UnityEngine.UI;
 public class UpdateBanditsGold : MonoBehaviour{
     private float numGold;
     [SerializeField] private ProgressBar banditGoldProgressBar;
-    [SerializeField] private GameObject carriage;
+    [SerializeField] private CarriageGold carriageGoldInfo;
+    [SerializeField] private DepositLoot banditBaseGoldInfo;
     void UpdateProgressBar(){
-        banditGoldProgressBar.UpdateValue(numGold/(carriage.GetComponent<CarriageGold>().GetGoldAmnt()+numGold));
+
+        banditGoldProgressBar.UpdateValue(banditBaseGoldInfo.GetNumGold()/(carriageGoldInfo.GetGoldAmnt()+banditBaseGoldInfo.GetNumGold()));
     }
     // Start is called before the first frame update
     void Start(){
-        carriage = GameObject.FindWithTag("Carriage");
+        carriageGoldInfo = GameObject.FindWithTag("Carriage").GetComponent<CarriageGold>();
+        banditBaseGoldInfo = GameObject.FindWithTag("BanditBase").transform.Find("Bandit's Stash").GetComponent<DepositLoot>();
         banditGoldProgressBar = gameObject.GetComponent<ProgressBar>();
-        numGold = 0;
-        Debug.Log("Bandit Gold ");
-        UpdateProgressBar();
-
-    }
-    public float GetnumGold(){
-        return numGold;
-    }
-    public void DepositGold(){
-        numGold += 1;
-        UpdateProgressBar();
-        
-    }
-    public void WithdrawGold(){
-        numGold -= 1;
         UpdateProgressBar();
     }
-
+    void Update(){
+        UpdateProgressBar();
+    }
 }

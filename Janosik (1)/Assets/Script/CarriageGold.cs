@@ -23,10 +23,10 @@ public class CarriageGold : MonoBehaviour
     }
     public void DepositGold(){
         this.goldAmmount += 1;
-    }    
+    }
     public void Start(){
         SetGoldAmnt(4);
-        carriageCollider = gameObject.GetComponent<SphereCollider>();
+        carriageCollider = gameObject.GetComponentInChildren<SphereCollider>();
         players = GameObject.FindGameObjectsWithTag("Player");
        
     }
