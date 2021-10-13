@@ -8,7 +8,7 @@ public class DepositLoot : MonoBehaviour{
     [SerializeField] private Text PlayerPrompt;
     [SerializeField] private int numGold;
     public void Start(){
-        players = GameObject.FindGameObjectsWithTag("Player");
+        players = ObjectPool.SharedInstance.GetPooledObjects(2);
         numGold = 0;
     }
     public int GetNumGold(){
@@ -24,27 +24,29 @@ public class DepositLoot : MonoBehaviour{
     public void Update(){
         foreach (GameObject player in players){ 
             PlayerPrompt = player.GetComponentInChildren<Text>();
-            if (LootDetectionVolume.bounds.Contains(player.transform.position)){
-                bool hasGold = player.GetComponent<AtSpawn>().GethasGold();
-                if (player.transform.Find("PlayerBody").CompareTag("Bandit") && hasGold){
-                    PlayerPrompt.text = "Press E to stash gold.";
-                    PlayerPrompt.enabled = true;
-        
-                    player.GetComponent<AtSpawn>().SethasGold(false);
-                    numGold++;
-                    PlayerPrompt.enabled = false;
-                }
-                else if (player.transform.Find("PlayerBody").CompareTag("Guard")  && !(hasGold) &&(numGold != 0)){
-                    PlayerPrompt.text = "Press E to steal Bandit's gold.";
-                    PlayerPrompt.enabled = true;
-                    if (Input.GetButtonDown("Interact")){
-                        player.GetComponent<AtSpawn>().SethasGold(true);
-                        numGold--;
+            if(player.activeInHierarchy){
+                if (LootDetectionVolume.bounds.Contains(player.transform.position)){
+                    bool hasGold = player.GetComponent<AtSpawn>().GethasGold();
+                    if (player.transform.Find("PlayerBody").CompareTag("Bandit") && hasGold){
+                        PlayerPrompt.text = "Press E to stash gold.";
+                        PlayerPrompt.enabled = true;
+            
+                        player.GetComponent<AtSpawn>().SethasGold(false);
+                        numGold++;
                         PlayerPrompt.enabled = false;
                     }
+                    else if (player.transform.Find("PlayerBody").CompareTag("Guard")  && !(hasGold) &&(numGold != 0)){
+                        PlayerPrompt.text = "Press E to steal Bandit's gold.";
+                        PlayerPrompt.enabled = true;
+                        if (Input.GetButtonDown("Interact")){
+                            player.GetComponent<AtSpawn>().SethasGold(true);
+                            numGold--;
+                            PlayerPrompt.enabled = false;
+                        }
 
-                }
-            } 
+                    }
+                } 
+            }
         }
     }
 }

@@ -13,24 +13,22 @@ public class DetectLooter : MonoBehaviour{
     void Start(){
         chestController = gameObject.transform.parent.gameObject.GetComponent<MaintainLootChest>(); 
         chestCollider = gameObject.GetComponent<SphereCollider>();
-        players  = GameObject.FindGameObjectsWithTag("Player");
+        players  = ObjectPool.SharedInstance.GetPooledObjects(2);
     }
     void Update(){
-        if(players.Length == 0)
-            players  = GameObject.FindGameObjectsWithTag("Player");
         foreach(GameObject player in players){
-            playerAtSpawn = player.GetComponent<AtSpawn>();
-            playerPromptText = player.GetComponentInChildren<Text>();
-            if(chestCollider.bounds.Contains(player.transform.position) && !playerAtSpawn.hasGold && player.transform.Find("PlayerBody").tag == "Guard"){
-                playerPromptText.enabled = true;
-                if(Input.GetButtonDown("Interact")){
-                    Debug.Log("We are stealing Gold!");
-                    chestController.stealGold();
-                    playerAtSpawn.hasGold = true;
-                    playerPromptText.enabled = false;
-
+            if(player.activeInHierarchy){
+                if(chestCollider.bounds.Contains(player.transform.position) && !playerAtSpawn.hasGold && player.transform.Find("PlayerBody").tag == "Guard"){
+                    playerPromptText = player.GetComponentInChildren<Text>();
+                    playerPromptText.enabled = true;
+                    if(Input.GetButtonDown("Interact")){
+                        Debug.Log("We are stealing Gold!");
+                        chestController.stealGold();
+                        player.GetComponent<AtSpawn>().hasGold = true;
+                        playerPromptText.enabled = false;
+                    }
                 }
-            }    
+            } 
         }
     }
 }

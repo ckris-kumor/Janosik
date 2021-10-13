@@ -39,12 +39,7 @@ public class PlayerLook : MonoBehaviour{
         m_Camera.fieldOfView = defaultFOV - offSetFOV * (Input.GetButton("Fire2")?1.00f:Input.GetAxis("Fire2"));
         rayOrigin = m_Camera.ViewportToWorldPoint(new Vector3(0.5f,0.5f,0.0f));
         if(Physics.Raycast(rayOrigin, m_Camera.transform.forward.normalized, out hit)){
-            if(hit.transform.CompareTag("Player")){
-                enemyHealthBar.SetActive(true);
-                enemyHealthBar.transform.position = m_Camera.WorldToScreenPoint(hit.transform.Find("HealthBarLoc").position);
-                enemyHealthBarController.ShowEnemyHealth(hit.transform.name, hit.transform.gameObject.GetComponent<AtSpawn>().Gethp());
-            }
-            else if(hit.transform.CompareTag("AI")){
+            if((hit.transform.CompareTag("Player") || hit.transform.CompareTag("AI")) && hit.transform.gameObject != gameObject){
                 enemyHealthBar.SetActive(true);
                 enemyHealthBar.transform.position = m_Camera.WorldToScreenPoint(hit.transform.Find("HealthBarLoc").position);
                 enemyHealthBarController.ShowEnemyHealth(hit.transform.name, hit.transform.gameObject.GetComponent<AtSpawn>().Gethp());

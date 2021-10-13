@@ -43,8 +43,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 5.7
-  m_Center: {x: 16.85, y: 3.03, z: -1.61}
+  m_Radius: 6.38
+  m_Center: {x: 0, y: 0.45, z: 0}
 --- !u!114 &1194509460683563014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,7 +60,7 @@ MonoBehaviour:
   LootDetectionVolume: {fileID: 1194509460683563015}
   players: []
   PlayerPrompt: {fileID: 0}
-  banditsGold: {fileID: 0}
+  numGold: 0
 --- !u!1 &1954460579705880445
 GameObject:
   m_ObjectHideFlags: 0

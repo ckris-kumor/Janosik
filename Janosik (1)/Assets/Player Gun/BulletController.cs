@@ -5,10 +5,10 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
     void DestroyBullet(){
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
-    void Start(){
-        Invoke("DestroyBullet", 0.5f);
+    void OnEnable(){
+        Invoke("DestroyBullet", 2.0f);
     }
 
 }

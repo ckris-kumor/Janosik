@@ -17,7 +17,7 @@ public class MovingBandit : MonoBehaviour{
     [SerializeField] private Rigidbody banditRB;
     // Start is called before the first frame update
     void Start(){
-        carriage = GameObject.FindGameObjectWithTag("Carriage").transform.Find("wagon1").gameObject;
+        carriage = ObjectPool.SharedInstance.GetPooledObject(3);
         carriageBack = carriage.transform.Find("PromptInteractLoc");
         banditAnimator = gameObject.GetComponent<Animator>();
        //banditMeshAgent = gameObject.GetComponent<NavMeshAgent>();

@@ -6,13 +6,11 @@ public class GunCOntroller : MonoBehaviour{
     [SerializeField] private float gunDamage, weaponRange, fireRate, hitForce, nextFire;
     [Tooltip("How far down the controller trigger needs to be presed in order to trigger the gun. [0,1]")]
     [SerializeField] private float triggerActivation;
-    [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform muzzleTransform;
     [SerializeField] private AudioSource muzzleSoundSource;
     [SerializeField] private Camera playerCam;  
     [Tooltip("Initial Velocity of bullet leaving barrel.")] [SerializeField] private float initVelocity;
     [SerializeField] private ParticleSystem muzzleFlashPartSys;
-    private GameObject spawnedBullet;
     private RaycastHit hit;
     private Vector3 rayOrigin;
     void Start(){
@@ -26,9 +24,14 @@ public class GunCOntroller : MonoBehaviour{
             nextFire = Time.time + fireRate;
             muzzleFlashPartSys.Play();
             muzzleSoundSource.Play();
-            GameObject bullet;
-            bullet = Instantiate(bulletPrefab, muzzleTransform.position, Quaternion.identity);
-            bullet.GetComponent<Rigidbody>().AddForce(initVelocity*playerCam.transform.forward.normalized);
+            GameObject bullet = ObjectPool.SharedInstance.GetPooledObject(4);
+            if(bullet != null){
+                bullet.transform.position = muzzleTransform.position;
+                bullet.transform.rotation = Quaternion.identity;
+                bullet.SetActive(true);
+                bullet.GetComponent<Rigidbody>().AddForce(initVelocity*playerCam.transform.forward.normalized);
+            }
+            bullet = null;
             rayOrigin = playerCam.ViewportToWorldPoint(new Vector3(0.5f,0.5f,0.0f));
             Debug.DrawRay(rayOrigin, playerCam.transform.forward.normalized*weaponRange, Color.red);
             if(Physics.Raycast(rayOrigin, playerCam.transform.forward.normalized, out hit, weaponRange)){

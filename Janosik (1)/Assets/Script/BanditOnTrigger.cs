@@ -15,7 +15,7 @@ public class BanditOnTrigger : MonoBehaviour{
     void Start(){
         //Gathered and stored references to locations pf interest, stats on bandit, places bandit can be hit bgy bullet, etc...
         BanditSpawn = GameObject.FindGameObjectWithTag("BanditBase").transform.Find("Bandit's Stash");
-        carriage = GameObject.FindGameObjectWithTag("Carriage");
+        carriage = ObjectPool.SharedInstance.GetActiveObject(3);
         banditInfo = gameObject.GetComponent<AtSpawn>();
         banditHead = transform.Find("EthanSkeleton/EthanHips/EthanSpine/EthanSpine1/EthanSpine2/EthanNeck/EthanHead/HeadDetectorLoc");
         carriageGold = carriage.GetComponent<CarriageGold>();
@@ -29,8 +29,15 @@ public class BanditOnTrigger : MonoBehaviour{
                 carriageGold.DepositGold();
             banditInfo.SethasGold(false);
             GameStats.killCount++;
-            Instantiate(banditPrefab, BanditSpawn.position, Quaternion.identity);
-            Destroy(gameObject);
+            GameObject newBandit = ObjectPool.SharedInstance.GetPooledObject(0);
+            if(newBandit != null){
+                newBandit.transform.position = BanditSpawn.position;
+                newBandit.transform.rotation = Quaternion.identity;
+                newBandit.SetActive(true);
+            }
+            newBandit = null;
+            gameObject.SetActive(false);
+
         }
         else if ((banditInfo.Gethp() - damage) > 0)
             banditInfo.Sethp(banditInfo.Gethp() - (int)damage);
