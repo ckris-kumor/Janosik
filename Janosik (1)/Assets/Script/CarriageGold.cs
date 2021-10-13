@@ -12,6 +12,8 @@ public class CarriageGold : MonoBehaviour
     [SerializeField] private int goldAmmount;
     [SerializeField] private Text PlayerPrompt;
     [SerializeField] private AtSpawn playerInfo;
+    [SerializeField] private Transform interactPromptLoc;
+    [SerializeField] private Camera playerCam;
     public float GetGoldAmnt(){
         return goldAmmount;
     }
@@ -26,8 +28,9 @@ public class CarriageGold : MonoBehaviour
     }
     public void Start(){
         SetGoldAmnt(4);
-        carriageCollider = gameObject.GetComponentInChildren<SphereCollider>();
+        carriageCollider = GetComponent<SphereCollider>();
         players = GameObject.FindGameObjectsWithTag("Player");
+        interactPromptLoc = transform.Find("PromptInteractLoc");
        
     }
     public void Update(){
@@ -36,11 +39,12 @@ public class CarriageGold : MonoBehaviour
             players  = GameObject.FindGameObjectsWithTag("Player");
         //Figuring out which player is near the carriage
         foreach (GameObject player in players){
-            PlayerPrompt = player.GetComponentInChildren<Text>();
             playerInfo = player.GetComponent<AtSpawn>();
+            playerCam = player.GetComponentInChildren<Camera>();
+            PlayerPrompt = player.transform.Find("Camera/Canvas/InteractPrompt").gameObject.GetComponent<Text>();;
+            PlayerPrompt.transform.position = playerCam.WorldToScreenPoint(interactPromptLoc.position);
             if(carriageCollider.bounds.Contains(player.transform.position)){
                 if(playerInfo.hasGold && player.transform.Find("PlayerBody").gameObject.tag == "Guard"){
-                    PlayerPrompt.text = "Press E to deposit gold.";
                     PlayerPrompt.enabled = true;
                     if (Input.GetButtonDown("Interact")){
                         this.goldAmmount++;
@@ -49,7 +53,6 @@ public class CarriageGold : MonoBehaviour
                     }
                 }
                 else if(!playerInfo.hasGold && player.transform.Find("PlayerBody").gameObject.tag == "Bandit"){
-                    PlayerPrompt.text = "Press E to steal gold.";
                     PlayerPrompt.enabled = true;
                     if (Input.GetButtonDown("Interact")){
                         this.goldAmmount--;
@@ -58,6 +61,8 @@ public class CarriageGold : MonoBehaviour
                     }
                 }
             }
+            else
+                PlayerPrompt.enabled = false;
         }
     }
 }

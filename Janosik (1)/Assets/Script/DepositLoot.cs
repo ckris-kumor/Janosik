@@ -26,9 +26,10 @@ public class DepositLoot : MonoBehaviour{
             PlayerPrompt = player.GetComponentInChildren<Text>();
             if (LootDetectionVolume.bounds.Contains(player.transform.position)){
                 bool hasGold = player.GetComponent<AtSpawn>().GethasGold();
-                if (player.CompareTag("Bandit") && hasGold){
+                if (player.transform.Find("PlayerBody").CompareTag("Bandit") && hasGold){
                     PlayerPrompt.text = "Press E to stash gold.";
                     PlayerPrompt.enabled = true;
+        
                     player.GetComponent<AtSpawn>().SethasGold(false);
                     numGold++;
                     PlayerPrompt.enabled = false;

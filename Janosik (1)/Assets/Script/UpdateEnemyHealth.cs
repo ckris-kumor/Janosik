@@ -2,12 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UpdateEnemyHealth : MonoBehaviour
-{
+public class UpdateEnemyHealth : MonoBehaviour{
     [SerializeField] private ProgressBar enemyHealthBar;
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start(){
         enemyHealthBar = GetComponent<ProgressBar>();
         gameObject.SetActive(false);
     }

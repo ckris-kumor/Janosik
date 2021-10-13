@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,15 +10,10 @@ public class UpdateHealth : MonoBehaviour
  
     // Start is called before the first frame update
     public void Start(){
-        
         playerInfo = GetComponentInParent<AtSpawn>();
         HPProgressBar = GetComponent<ProgressBar>();
         HPProgressBar.UpdateValue((float)(playerInfo.Gethp()/100));
-        
-
     }
-
-    
     void Update(){
         HPProgressBar.UpdateValue((float)(playerInfo.Gethp()/100));
     }

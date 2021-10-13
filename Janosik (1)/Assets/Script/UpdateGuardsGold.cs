@@ -16,7 +16,7 @@ public class UpdateGuardsGold : MonoBehaviour{
     }
     // Start is called before the first frame update
     void Start(){
-        carriageGoldInfo = GameObject.FindWithTag("Carriage").GetComponent<CarriageGold>();
+        carriageGoldInfo = GameObject.FindWithTag("Carriage").transform.Find("wagon1").gameObject.GetComponent<CarriageGold>();
         guardGoldProgressBar = gameObject.GetComponent<ProgressBar>();
         banditGoldInfo = GameObject.FindWithTag("BanditBase").transform.Find("Bandit's Stash").gameObject.GetComponent<DepositLoot>();
         UpdateProgressBar();    

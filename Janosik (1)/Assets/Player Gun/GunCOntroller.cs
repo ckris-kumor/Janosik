@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class GunCOntroller : MonoBehaviour{
     [SerializeField] private float gunDamage, weaponRange, fireRate, hitForce, nextFire;
+    [Tooltip("How far down the controller trigger needs to be presed in order to trigger the gun. [0,1]")]
+    [SerializeField] private float triggerActivation;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform muzzleTransform;
     [SerializeField] private AudioSource muzzleSoundSource;
-    [SerializeField] private Camera playerCam;    
+    [SerializeField] private Camera playerCam;  
     [Tooltip("Initial Velocity of bullet leaving barrel.")] [SerializeField] private float initVelocity;
     [SerializeField] private ParticleSystem muzzleFlashPartSys;
     private GameObject spawnedBullet;
@@ -16,12 +18,11 @@ public class GunCOntroller : MonoBehaviour{
     void Start(){
         muzzleFlashPartSys = GetComponentInChildren<ParticleSystem>();
         muzzleSoundSource = GetComponentInChildren<AudioSource>();
-        playerCam = transform.parent.GetComponentInChildren<Camera>();
+        playerCam = transform.parent.parent.parent.parent.parent.parent.parent.parent.parent.gameObject.GetComponentInChildren<Camera>();
         muzzleTransform = transform.Find("MuzzleExit");
-        
     }
     void Update(){
-        if(Input.GetButtonDown("Fire1") && Time.time > nextFire){
+        if((Input.GetButtonDown("Fire1") || Input.GetAxis("Fire1") >= triggerActivation) && Time.time > nextFire){
             nextFire = Time.time + fireRate;
             muzzleFlashPartSys.Play();
             muzzleSoundSource.Play();
