@@ -640,7 +640,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_animator: {fileID: 5205814543009647980}
   m_characterController: {fileID: 1825172909192841540}
-  jumpHeight: 1.5
+  jumpHeight: 1.2
   gravityVal: -9.8
   minDist: 0.1
   playerYVelocity: 0
@@ -670,6 +670,8 @@ MonoBehaviour:
   enemyHealthBarController: {fileID: 0}
   enemyHealthBar: {fileID: 0}
   playerUpperbodyTransform: {fileID: 0}
+  camOGYPos: 0
+  ADSMultiplier: 0.25
 --- !u!114 &1609874783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3566,7 +3568,15 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5852765352126804257, guid: d819231d3068067419157a2038f6f69a, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5852765352126804257, guid: d819231d3068067419157a2038f6f69a, type: 3}
       propertyPath: startDelay.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5852765352126804257, guid: d819231d3068067419157a2038f6f69a, type: 3}
+      propertyPath: VelocityModule.enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5852765352126804257, guid: d819231d3068067419157a2038f6f69a, type: 3}

@@ -15,6 +15,11 @@ public class PlayerLook : MonoBehaviour{
     [SerializeField] private UpdateEnemyHealth enemyHealthBarController;
     [SerializeField] private GameObject enemyHealthBar;
     [SerializeField] private Transform playerUpperbodyTransform;
+    [Tooltip("How far down do we want the camera to be so that the player is visible to the camera when crouching or jumping?")]
+    [SerializeField] private float camOGYPos;
+    [Tooltip("How much (if wanted) do we want to limit V+H look sensitivity")]
+    [SerializeField] private float ADSMultiplier;
+
     private float rotY;
     private Vector3 rayOrigin;
     private RaycastHit hit;
@@ -25,20 +30,29 @@ public class PlayerLook : MonoBehaviour{
         enemyHealthBar = transform.Find("Camera/Canvas/Enemy Health Bar").gameObject;
         enemyHealthBarController = enemyHealthBar.GetComponent<UpdateEnemyHealth>();
         playerUpperbodyTransform = m_Camera.transform.parent.Find("mixamorig1:Hips/mixamorig1:Spine/mixamorig1:Spine1");
+        camOGYPos = m_Camera.transform.position.y - transform.position.y;
     }
     // Update is called once per frame
     void Update(){
         //have player object and camera rotate around Y axis when they are moving mouse or right jopystick at lookSensitivity degree per second * the amount
-        transform.Rotate(0.0f, Input.GetAxis("Mouse X")*lookSensitivity, 0.0f, Space.World);
+        transform.Rotate(0.0f, Input.GetAxis("Mouse X")*lookSensitivity*(m_Camera.fieldOfView<defaultFOV?ADSMultiplier:1.00f), 0.0f, Space.World);
         //calculating the rotation on x Axis and making sure the value that passed into the Euler func is [-viewRange, viewRange]
         rotY += Input.GetAxis("Mouse Y") * ySensitivity;
         rotY = Mathf.Clamp(rotY, -viewRange, viewRange);
+        //Debug.Log(rotY*(m_Camera.fieldOfView<defaultFOV?0.1f:1.00f));
        //rotating just the camera on the X axis.
-        m_Camera.transform.localRotation = Quaternion.Euler(rotY, 0, 0);
+        m_Camera.transform.localRotation = Quaternion.Euler(rotY*(m_Camera.fieldOfView<defaultFOV?ADSMultiplier:1.00f), 0, 0);
+        //I want the players body from mthe hip up to move with the camera to give appearance of aiming
         playerUpperbodyTransform.localRotation = Quaternion.Euler(rotY, 0, 0);
+        //Zoom in effect for player "aiming down sight"
         m_Camera.fieldOfView = defaultFOV - offSetFOV * (Input.GetButton("Fire2")?1.00f:Input.GetAxis("Fire2"));
+        //Make sure camera is at same fixed distance from the player;
+        m_Camera.transform.position = new Vector3(m_Camera.transform.position.x, (m_Camera.transform.position.y-transform.position.y!=camOGYPos)?(transform.position.y+camOGYPos):m_Camera.transform.position.y,m_Camera.transform.position.z);
+        //Firing raycast through crosshair
         rayOrigin = m_Camera.ViewportToWorldPoint(new Vector3(0.5f,0.5f,0.0f));
+        
         if(Physics.Raycast(rayOrigin, m_Camera.transform.forward.normalized, out hit)){
+            //If theobjec in our LOS is an enemy player or AI
             if((hit.transform.CompareTag("Player") || hit.transform.CompareTag("AI")) && hit.transform.gameObject != gameObject){
                 enemyHealthBar.SetActive(true);
                 enemyHealthBar.transform.position = m_Camera.WorldToScreenPoint(hit.transform.Find("HealthBarLoc").position);

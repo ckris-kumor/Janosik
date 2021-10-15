@@ -9,24 +9,23 @@ public class DetectLooter : MonoBehaviour{
     private Text playerPromptText;
     [SerializeField] private MaintainLootChest chestController;
     [SerializeField] private SphereCollider chestCollider;
-    [SerializeField] private GameObject[] players;
+    [SerializeField] private List<GameObject> players;
     void Start(){
         chestController = gameObject.transform.parent.gameObject.GetComponent<MaintainLootChest>(); 
         chestCollider = gameObject.GetComponent<SphereCollider>();
-        players  = ObjectPool.SharedInstance.GetPooledObjects(2);
+        players  = ObjectPool.SharedInstance.GetActiveObjects(2);
     }
     void Update(){
+        players  = ObjectPool.SharedInstance.GetActiveObjects(2);
         foreach(GameObject player in players){
-            if(player.activeInHierarchy){
-                if(chestCollider.bounds.Contains(player.transform.position) && !playerAtSpawn.hasGold && player.transform.Find("PlayerBody").tag == "Guard"){
-                    playerPromptText = player.GetComponentInChildren<Text>();
-                    playerPromptText.enabled = true;
-                    if(Input.GetButtonDown("Interact")){
-                        Debug.Log("We are stealing Gold!");
-                        chestController.stealGold();
-                        player.GetComponent<AtSpawn>().hasGold = true;
-                        playerPromptText.enabled = false;
-                    }
+            if(chestCollider.bounds.Contains(player.transform.position) && !playerAtSpawn.hasGold && player.transform.Find("PlayerBody").tag == "Guard"){
+                playerPromptText = player.GetComponentInChildren<Text>();
+                playerPromptText.enabled = true;
+                if(Input.GetButtonDown("Interact")){
+                    Debug.Log("We are stealing Gold!");
+                    chestController.stealGold();
+                    player.GetComponent<AtSpawn>().hasGold = true;
+                    playerPromptText.enabled = false;
                 }
             } 
         }

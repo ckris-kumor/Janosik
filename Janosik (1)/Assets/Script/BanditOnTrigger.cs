@@ -23,23 +23,30 @@ public class BanditOnTrigger : MonoBehaviour{
     public void HitByBullet(float gunDamage, Vector3 hitPoint){
         //When the bandit is hit by the another players LOS and that player has fire a bullet, do actions bellow to account for damage this bandit will take
         float damage = (Vector3.Distance(banditHead.position,hitPoint)<=minDist)?gunDamage*2.0f:gunDamage;
-        //If the Bandit dies then have its gold deposited back into the carriage, subject to change in the future.
+        //If the Bandit diesfrom this hit
         if ((banditInfo.Gethp() - damage) <= 0){
+            //Deposit their gold back to the carriage if they have any, subject to change
             if(banditInfo.GethasGold())
                 carriageGold.DepositGold();
-            banditInfo.SethasGold(false);
+            //banditInfo.SethasGold(false);
+            //Update the given the local players kill count
             GameStats.killCount++;
+            //make sure the current bandit that has died becomes deactivated and can be repurposed
+            gameObject.SetActive(false);
+            //find unused bandit AI on object pool
             GameObject newBandit = ObjectPool.SharedInstance.GetPooledObject(0);
             if(newBandit != null){
+                //spawn said bandit at base
                 newBandit.transform.position = BanditSpawn.position;
                 newBandit.transform.rotation = Quaternion.identity;
+                //make sure it not seen as a object that repurposed while in use
                 newBandit.SetActive(true);
             }
+            //delete temp vars tie to reference
             newBandit = null;
-            gameObject.SetActive(false);
-
         }
-        else if ((banditInfo.Gethp() - damage) > 0)
+        else
+            //If this bullet does not kill use then apply appropriate damage to bandits health
             banditInfo.Sethp(banditInfo.Gethp() - (int)damage);
     }
 }

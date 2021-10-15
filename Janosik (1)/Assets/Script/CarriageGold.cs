@@ -8,7 +8,7 @@ public class CarriageGold : MonoBehaviour
 {
     [Tooltip("This collider will detect if the player is a the immediate area of the carriage.")]
     [SerializeField] private SphereCollider carriageCollider;
-    [SerializeField] private GameObject[] players;
+    [SerializeField] private List<GameObject> players;
     [SerializeField] private int goldAmmount;
     [SerializeField] private Text PlayerPrompt;
     [SerializeField] private AtSpawn playerInfo;
@@ -29,39 +29,37 @@ public class CarriageGold : MonoBehaviour
     public void Start(){
         SetGoldAmnt(4);
         carriageCollider = GetComponent<SphereCollider>();
-        players = ObjectPool.SharedInstance.GetPooledObjects(2);
+        players = ObjectPool.SharedInstance.GetActiveObjects(2);
         interactPromptLoc = transform.Find("PromptInteractLoc");
-       
     }
     public void Update(){
+        players = ObjectPool.SharedInstance.GetActiveObjects(2);
         //Figuring out which player is near the carriage
         foreach (GameObject player in players){
-            if(player.activeInHierarchy){
-                playerInfo = player.GetComponent<AtSpawn>();
-                playerCam = player.GetComponentInChildren<Camera>();
-                PlayerPrompt = player.transform.Find("Camera/Canvas/InteractPrompt").gameObject.GetComponent<Text>();;
-                PlayerPrompt.transform.position = playerCam.WorldToScreenPoint(interactPromptLoc.position);
-                if(carriageCollider.bounds.Contains(player.transform.position)){
-                    if(playerInfo.hasGold && player.transform.Find("PlayerBody").gameObject.tag == "Guard"){
-                        PlayerPrompt.enabled = true;
-                        if (Input.GetButtonDown("Interact")){
-                            this.goldAmmount++;
-                            playerInfo.SethasGold(false);
-                            PlayerPrompt.enabled = false;
-                        }
-                    }
-                    else if(!playerInfo.hasGold && player.transform.Find("PlayerBody").gameObject.tag == "Bandit"){
-                        PlayerPrompt.enabled = true;
-                        if (Input.GetButtonDown("Interact")){
-                            this.goldAmmount--;
-                            playerInfo.SethasGold(true);
-                            PlayerPrompt.enabled = false;
-                        }
+            playerInfo = player.GetComponent<AtSpawn>();
+            playerCam = player.GetComponentInChildren<Camera>();
+            PlayerPrompt = player.transform.Find("Camera/Canvas/InteractPrompt").gameObject.GetComponent<Text>();;
+            PlayerPrompt.transform.position = playerCam.WorldToScreenPoint(interactPromptLoc.position);
+            if(carriageCollider.bounds.Contains(player.transform.position)){
+                if(playerInfo.hasGold && player.transform.Find("PlayerBody").gameObject.tag == "Guard"){
+                    PlayerPrompt.enabled = true;
+                    if (Input.GetButtonDown("Interact")){
+                        this.goldAmmount++;
+                        playerInfo.SethasGold(false);
+                        PlayerPrompt.enabled = false;
                     }
                 }
-                else
-                    PlayerPrompt.enabled = false;
+                else if(!playerInfo.hasGold && player.transform.Find("PlayerBody").gameObject.tag == "Bandit"){
+                    PlayerPrompt.enabled = true;
+                    if (Input.GetButtonDown("Interact")){
+                        this.goldAmmount--;
+                        playerInfo.SethasGold(true);
+                        PlayerPrompt.enabled = false;
+                    }
+                }
             }
+            else
+                PlayerPrompt.enabled = false;
         }
     }
 }
