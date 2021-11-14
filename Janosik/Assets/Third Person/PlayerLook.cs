@@ -19,6 +19,8 @@ public class PlayerLook : MonoBehaviour{
     [SerializeField] private float camOGYPos;
     [Tooltip("How much (if wanted) do we want to limit V+H look sensitivity")]
     [SerializeField] private float ADSMultiplier;
+    [Tooltip("The position of the player's upperbody w/ respect to their transform hierarchy.")]
+    [SerializeField] private string upperBodyLoc;
 
     private float rotY;
     private Vector3 rayOrigin;
@@ -29,7 +31,7 @@ public class PlayerLook : MonoBehaviour{
         rotY = m_Camera.transform.eulerAngles.y;
         enemyHealthBar = transform.Find("Camera/Canvas/Enemy Health Bar").gameObject;
         enemyHealthBarController = enemyHealthBar.GetComponent<UpdateEnemyHealth>();
-        playerUpperbodyTransform = m_Camera.transform.parent.Find("mixamorig1:Hips/mixamorig1:Spine/mixamorig1:Spine1");
+        playerUpperbodyTransform = transform.Find(upperBodyLoc);
         camOGYPos = m_Camera.transform.position.y - transform.position.y;
     }
     // Update is called once per frame

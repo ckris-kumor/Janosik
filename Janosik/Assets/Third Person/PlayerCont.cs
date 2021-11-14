@@ -12,6 +12,8 @@ public class PlayerCont : MonoBehaviour
     [Tooltip("Minimum distance Ray from bottom of capsule collider downwards extends.")] [SerializeField] private float minDist;
     [SerializeField] private float  playerYVelocity, runningSpeed, walkingSpeed, lookSensitivity;
     [SerializeField] private GameObject playerGun;
+    [Tooltip("The position the gun lies in the players hierarchy.")]
+    [SerializeField] private string gunLoc;
     private Vector3 RayOrigin;
     [Tooltip("Is the player on the ground?")][SerializeField] private bool isGrounded;
     RaycastHit hit;
@@ -20,7 +22,7 @@ public class PlayerCont : MonoBehaviour
         //m_animator.applyRootMotion = true;
         m_characterController = gameObject.GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
-        playerGun = transform.Find("mixamorig1:Hips/mixamorig1:Spine/mixamorig1:Spine1/mixamorig1:Spine2/mixamorig1:RightShoulder/mixamorig1:RightArm/mixamorig1:RightForeArm/mixamorig1:RightHand/Musket").gameObject;
+        playerGun = transform.Find(gunLoc).gameObject;
         
     }
     void Update(){

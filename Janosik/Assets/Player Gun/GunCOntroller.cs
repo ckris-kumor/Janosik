@@ -17,7 +17,7 @@ public class GunCOntroller : MonoBehaviour{
     void Start(){
         muzzleFlashPartSys = GetComponentInChildren<ParticleSystem>();
         muzzleSoundSource = GetComponentInChildren<AudioSource>();
-        playerCam = transform.parent.parent.parent.parent.parent.parent.parent.parent.parent.gameObject.GetComponentInChildren<Camera>();
+        playerCam = transform.root.gameObject.GetComponentInChildren<Camera>();
         muzzleTransform = transform.Find("MuzzleExit");
     }
     void Update(){
