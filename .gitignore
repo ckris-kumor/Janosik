@@ -35,3 +35,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+Janosik/Assets/Terrain/Terrain Layers/Beach Gravel with Pebbles/Textures/Albedo_8K__uifndiulw.png
+*.meta
+Janosik/Assets/Terrain/Terrain Layers/Beach Gravel with Pebbles/Textures/Masks_8K__uifndiulw.png
+*.png
