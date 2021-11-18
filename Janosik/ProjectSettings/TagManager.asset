@@ -26,6 +26,7 @@ TagManager:
   - Tree
   - AI
   - Map
+  - Post Process
   layers:
   - Default
   - TransparentFX
@@ -33,7 +34,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Post Process
   - 
   - Bullet
   - Barrell
