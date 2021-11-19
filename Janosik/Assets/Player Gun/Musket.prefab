@@ -586,6 +586,7 @@ GameObject:
   - component: {fileID: 5858894615934063574}
   - component: {fileID: 5867032848403318860}
   - component: {fileID: 5852765352954286300}
+  - component: {fileID: 3999393348259181062}
   m_Layer: 9
   m_Name: Musket
   m_TagString: Musket
@@ -601,7 +602,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5854522457109703822}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0.041, y: 0.453, z: 0.053}
+  m_LocalPosition: {x: 0.041, y: 0.453, z: 0.05}
   m_LocalScale: {x: 30, y: 30, z: 30}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -689,6 +690,20 @@ MonoBehaviour:
   playerCam: {fileID: 0}
   initVelocity: 4000
   muzzleFlashPartSys: {fileID: 0}
+--- !u!136 &3999393348259181062
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5854522457109703822}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.0037154215
+  m_Height: 0.04564032
+  m_Direction: 1
+  m_Center: {x: -0.00012818858, y: -0.00045176316, z: -0.0009}
 --- !u!1001 &3478053552817848682
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -4,12 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 namespace Com.ZiomakiStudios.Janosik{
     public class DetectLooter : MonoBehaviour{
-        
+        #region Private Fields
         [SerializeField] private PlayerInfo playerAtSpawn;
         private Text playerPromptText;
         [SerializeField] private MaintainLootChest chestController;
         [SerializeField] private SphereCollider chestCollider;
         [SerializeField] private List<GameObject> players;
+        #endregion
         void Start(){
             chestController = gameObject.transform.parent.gameObject.GetComponent<MaintainLootChest>(); 
             chestCollider = gameObject.GetComponent<SphereCollider>();

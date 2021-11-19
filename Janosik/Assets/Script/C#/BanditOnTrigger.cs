@@ -50,7 +50,7 @@ namespace Com.ZiomakiStudios.Janosik{
             }
             else
                 //If this bullet does not kill use then apply appropriate damage to bandits health
-                banditInfo.Sethp(banditInfo.Gethp() - (int)damage);
+                banditInfo.Sethp(banditInfo.Gethp() - damage);
         }
     }
 }

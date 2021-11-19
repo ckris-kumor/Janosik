@@ -4,16 +4,16 @@ using UnityEngine;
 namespace Com.ZiomakiStudios.Janosik{
     public class PlayerInfo : MonoBehaviour{
     //embody player with appropriate attributes
-    private int hp;
+    private float hp;
     public bool hasGold;
     public void Start(){
-       this.hp = 100;
+       this.hp = 100.0f;
        this.hasGold = false;
     }
-    public int Gethp(){
+    public float Gethp(){
         return hp;
     }
-    public void Sethp(int newHP){
+    public void Sethp(float newHP){
         this.hp = newHP;
     }
     public void SethasGold(bool val){

@@ -5,8 +5,7 @@ using UnityEditor;
 using UnityEditor.Presets;
 
 namespace Com.ZiomakiStudios.Janosik{
-    public class PlayerCont : MonoBehaviour
-    {
+    public class PlayerCont : MonoBehaviour{
         #region Private Serialized Fields
         [SerializeField] private Animator m_animator;
         [SerializeField] private CharacterController m_characterController;
@@ -14,15 +13,15 @@ namespace Com.ZiomakiStudios.Janosik{
         [Tooltip("Minimum distance Ray from bottom of capsule collider downwards extends.")] [SerializeField] private float minDist;
         [SerializeField] private float  playerYVelocity, runningSpeed, walkingSpeed, lookSensitivity;
         [SerializeField] private GameObject playerGun;
-        [Tooltip("The position the gun lies in the players hierarchy.")]
-        [SerializeField] private string gunLoc;
         [Tooltip("Is the player on the ground?")][SerializeField] private bool isGrounded;
         #endregion
         #region Private Vars
         private Vector3 RayOrigin;
         private RaycastHit hit;
-        private int isJumpingHash, isGroundedHash, verticalHash, horizontalHash, mouseXHash, isCrouchingHash, jumpDirHash;
+        private int isJumpingHash, isGroundedHash, verticalHash, horizontalHash, mouseXHash, isCrouchingHash, jumpDirHash, isAimingHash;
         #endregion
+        [Tooltip("The position the gun lies in the players hierarchy.")]
+        public string gunLoc;
         void Awake(){
             m_animator = gameObject.GetComponent<Animator>();
             //m_animator.applyRootMotion = true;
@@ -37,12 +36,15 @@ namespace Com.ZiomakiStudios.Janosik{
             mouseXHash = Animator.StringToHash("MouseX");
             isCrouchingHash = Animator.StringToHash("isCrouching");
             jumpDirHash = Animator.StringToHash("jumpDir");
+            isAimingHash = Animator.StringToHash("isAiming");
             
         }
         void Update(){
-            //Shooting a Raycast in the -y dir originating from the bottom of the feet
-            //The ray will only go minDist and when it hits the ground it will set isGrounded to truewww
-            //Once we know if the ray has hit the ground we will let the animator controller know
+            ///<summary>
+            ///Shooting a Raycast in the -y dir originating from the bottom of the feet.
+            ///The ray will only go minDist and when it hits the ground it will set isGrounded to true.
+            ///Once we know if the ray has hit the ground we will notify the animator component.
+            ///</summary>
             RayOrigin = new Vector3(m_characterController.bounds.center.x, m_characterController.bounds.min.y, m_characterController.bounds.center.z);
             isGrounded = Physics.Raycast(new Ray(RayOrigin, Vector3.down), out hit, minDist);
             m_animator.SetBool(isGroundedHash, isGrounded);
@@ -51,8 +53,8 @@ namespace Com.ZiomakiStudios.Janosik{
             //Using user input to tell the animator in what direction and magnitude
             m_animator.SetFloat(horizontalHash, Input.GetAxis("Horizontal"));
             //Pasing mouse x dir to animator for turning player
-            //Debug.Log(Input.GetAxisRaw("Mouse X"));
             m_animator.SetFloat(mouseXHash, Input.GetAxisRaw("Mouse X"));
+            m_animator.SetBool(isAimingHash, (Input.GetButton("Fire2")||Input.GetAxis("Fire2")!=0.0f));
             //If the user presses the crouch button tell the animator to trigger crouch 
             m_animator.SetBool(isCrouchingHash,(Input.GetButton("Crouch")));
             //Passing the direction of our y velocity, helps the animator decide if we are jumping up, in mid air , falling

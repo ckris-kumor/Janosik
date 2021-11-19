@@ -608,8 +608,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1825172909192841543, guid: 2708a386f030d8341a407e96e22ee4c2, type: 3}
+      propertyPath: gunLoc
+      value: BasicBandit/Armature/Hips/Spine/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R/Musket
+      objectReference: {fileID: 0}
+    - target: {fileID: 1825172909192841543, guid: 2708a386f030d8341a407e96e22ee4c2, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1825172909192841543, guid: 2708a386f030d8341a407e96e22ee4c2, type: 3}
+      propertyPath: playerGun
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2224470809271523094, guid: 2708a386f030d8341a407e96e22ee4c2, type: 3}
       propertyPath: m_RootOrder
