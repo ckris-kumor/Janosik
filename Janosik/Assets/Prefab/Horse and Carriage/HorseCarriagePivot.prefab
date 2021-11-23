@@ -26,86 +26,11 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.07759, y: 0.05395, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 152999038467802107}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &6112107016470935452
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 152999038468063259}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 59930b5366c5e8e428127bf6b0bdb745, type: 3}
---- !u!54 &2973578950314319298
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 152999038468070315}
-  serializedVersion: 2
-  m_Mass: 10
-  m_Drag: 0.1
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!135 &1153576630
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 152999038468070315}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.05
-  m_Center: {x: 0.09, y: 0.03, z: 0}
---- !u!114 &1153576628
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 152999038468070315}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aaf0968dcfe4df84485202b714f99b9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  carriageCollider: {fileID: 0}
-  players: []
-  goldAmmount: 0
-  PlayerPrompt: {fileID: 0}
-  playerInfo: {fileID: 0}
-  interactPromptLoc: {fileID: 0}
-  playerCam: {fileID: 0}
---- !u!64 &1454649994913958673
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 152999038468071001}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300002, guid: 59930b5366c5e8e428127bf6b0bdb745, type: 3}
 --- !u!1 &4214646072999424747
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,6 +59,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0.56516856, z: 0, w: 0.8249755}
   m_LocalPosition: {x: 15.521898, y: 4.62, z: 14.808662}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 152999038467802107}
   m_Father: {fileID: 0}
@@ -174,8 +100,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carriageNavAgent: {fileID: 4214646072999424756}
-  horse1Animator: {fileID: 0}
-  horse2Animator: {fileID: 0}
+  horseAnimators:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1001 &152999038468162587
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -285,6 +212,82 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 164864, guid: 37bb72f29b453d64bbe084f712d85bb4, type: 3}
   m_PrefabInstance: {fileID: 152999038468162587}
   m_PrefabAsset: {fileID: 0}
+--- !u!64 &6112107016470935452
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152999038468063259}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 59930b5366c5e8e428127bf6b0bdb745, type: 3}
+--- !u!54 &2973578950314319298
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152999038468070315}
+  serializedVersion: 2
+  m_Mass: 100
+  m_Drag: 0.5
+  m_AngularDrag: 0.25
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!135 &1153576630
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152999038468070315}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.03
+  m_Center: {x: 0.09, y: 0.04, z: 0}
+--- !u!114 &1153576628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152999038468070315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaf0968dcfe4df84485202b714f99b9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carriageCollider: {fileID: 0}
+  players: []
+  goldAmmount: 0
+  PlayerPrompt: {fileID: 0}
+  playerInfo: {fileID: 0}
+  interactPromptLoc: {fileID: 0}
+  playerCam: {fileID: 0}
+--- !u!64 &1454649994913958673
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152999038468071001}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300002, guid: 59930b5366c5e8e428127bf6b0bdb745, type: 3}
 --- !u!1001 &1724996711553148406
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -296,6 +299,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 9b439a35ff40acf488f268ef2d199bfb, type: 2}
+    - target: {fileID: 2717961757416191788, guid: 95b0f2e9a5ba81a49ac11a79aae792f3, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4870277373371771834, guid: 95b0f2e9a5ba81a49ac11a79aae792f3, type: 3}
       propertyPath: m_Name
       value: Horse2
@@ -369,6 +376,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 9b439a35ff40acf488f268ef2d199bfb, type: 2}
+    - target: {fileID: 2717961757416191788, guid: 95b0f2e9a5ba81a49ac11a79aae792f3, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4870277373371771834, guid: 95b0f2e9a5ba81a49ac11a79aae792f3, type: 3}
       propertyPath: m_Name
       value: Horse1

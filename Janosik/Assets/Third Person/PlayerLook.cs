@@ -7,6 +7,7 @@ namespace Com.ZiomakiStudios.Janosik{
         #region Private Serialized Fields
         [Tooltip("What is the tag of the enemy players?")]
         [SerializeField] private string enemyTag;
+        [SerializeField] private Animator m_Animator;
         [SerializeField] private Camera m_Camera;
         [Tooltip("Sensitivity of the Mouse in the horizontal.")]
         [SerializeField] private float lookSensitivity;
@@ -26,18 +27,23 @@ namespace Com.ZiomakiStudios.Janosik{
         private float rotY;
         private Vector3 rayOrigin;
         private RaycastHit hit;
+        private int isAimingHash;
         // Start is called before the first frame update
         void Start(){
             m_Camera = gameObject.GetComponentInChildren<Camera>();
+            m_Animator = gameObject.GetComponent<Animator>();
             rotY = m_Camera.transform.eulerAngles.y;
             enemyHealthBar = transform.Find("Camera/Canvas/Enemy Health Bar").gameObject;
             enemyHealthBarController = enemyHealthBar.GetComponent<UpdateEnemyHealth>();
             camOGYPos = m_Camera.transform.position.y - transform.position.y;
+            isAimingHash = Animator.StringToHash("isAiming");
         }
         // Update is called once per frame
         void Update(){
             //Zoom in effect for player "aiming down sight"
             m_Camera.fieldOfView = Input.GetButtonDown("Fire2")?(defaultFOV-offSetFOV):(Input.GetAxis("Fire2")!=0.0f?(defaultFOV-(offSetFOV*Input.GetAxis("Fire2"))):(defaultFOV));
+            //When aiming notify the animation system
+             m_Animator.SetBool(isAimingHash, (Input.GetButtonDown("Fire2") || Input.GetAxis("Fire2")!=0.0f));
             //have player object and camera rotate around Y axis when they are moving mouse or right jopystick at lookSensitivity degree per second * the amount
             transform.Rotate(0.0f, Input.GetAxis("Mouse X")*lookSensitivity*(m_Camera.fieldOfView!=defaultFOV?ADSMultiplier:1.00f), 0.0f, Space.World);
             ///<summary>

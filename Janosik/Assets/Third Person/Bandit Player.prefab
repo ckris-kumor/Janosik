@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 1555211672961584556}
   m_LocalRotation: {x: 0, y: 0.018918216, z: 0, w: 0.999821}
   m_LocalPosition: {x: 0.13316868, y: 1.9, z: -0.0025217533}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 828112966980263542}
@@ -100,8 +100,8 @@ MonoBehaviour:
   walkingSpeed: 3
   lookSensitivity: 50
   playerGun: {fileID: 9050662793601253673}
-  gunLoc: BasicBandit/Armature/Hips/Spine/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R
   isGrounded: 0
+  gunLoc: BasicBandit/Armature/Hips/Spine/Chest/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R
 --- !u!114 &1825172909192841536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,18 +115,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyTag: Guard
+  m_Animator: {fileID: 0}
   m_Camera: {fileID: 0}
   lookSensitivity: 1
   ySensitivity: 1
-  viewRange: 15
+  viewRange: 30
   defaultFOV: 70
   offSetFOV: 10
   enemyHealthBarController: {fileID: 0}
   enemyHealthBar: {fileID: 0}
-  playerUpperbodyTransform: {fileID: 0}
   camOGYPos: 0
   ADSMultiplier: 0.25
-  upperBodyLoc: BasicBandit/Armature/Hips/Spine/Chest
 --- !u!114 &1609874783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,6 +154,8 @@ MonoBehaviour:
   m_playerInfo: {fileID: 0}
   m_playerCont: {fileID: 0}
   m_playerLook: {fileID: 0}
+  m_Animator: {fileID: 0}
+  m_characterCont: {fileID: 0}
   headLoc: BasicBandit/Armature/Hips/Spine/Chest/Neck/Head/CenterHead
   minDist: 0.25
 --- !u!1 &5223696200393008642

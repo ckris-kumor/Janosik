@@ -28,7 +28,7 @@ namespace Com.ZiomakiStudios.Janosik{
             isDyingHash = Animator.StringToHash("isDying");
             finAtkHHash = Animator.StringToHash("finalBlowHorizontal");
             finAtkVHash = Animator.StringToHash("finalBlowVertical");
-            isHeadShotHash = Animator.StringToHash("isHeadSHot");
+            isHeadShotHash = Animator.StringToHash("isHeadShot");
         }
         IEnumerator triggerDeath(bool isHeadShot, Vector3 atkDir){
             m_playerInfo.Sethp(0);

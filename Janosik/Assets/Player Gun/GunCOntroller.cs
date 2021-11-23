@@ -49,6 +49,7 @@ namespace Com.ZiomakiStudios.Janosik{
                 /// fire off appropriate action 
                 ///</summary>
                 rayOrigin = playerCam.ViewportToWorldPoint(new Vector3(0.5f,0.5f,0.0f));
+                //rayOrigin = muzzleTransform.position;
                 Debug.DrawRay(rayOrigin, playerCam.transform.forward.normalized*weaponRange, Color.red);
                 if(Physics.Raycast(rayOrigin, playerCam.transform.forward.normalized, out hit, weaponRange)){
                     DamageController targetDmgCont = hit.transform.GetComponent<DamageController>();

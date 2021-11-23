@@ -2,7 +2,7 @@
   "dependencies": {
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.spriteshape": "7.0.3",
-    "com.unity.collab-proxy": "1.13.5",
+    "com.unity.collab-proxy": "1.15.1",
     "com.unity.feature.worldbuilding": "1.0.1",
     "com.unity.formats.fbx": "4.1.1",
     "com.unity.ide.vscode": "1.2.4",

@@ -682,13 +682,13 @@ MonoBehaviour:
   gunDamage: 50
   weaponRange: 125
   fireRate: 4
-  hitForce: 1000
+  hitForce: 4000
   nextFire: 0
   triggerActivation: 0.75
   muzzleTransform: {fileID: 5852765353104769566}
   muzzleSoundSource: {fileID: 5852765353408865667}
   playerCam: {fileID: 0}
-  initVelocity: 4000
+  initVelocity: 100
   muzzleFlashPartSys: {fileID: 0}
 --- !u!136 &3999393348259181062
 CapsuleCollider:
