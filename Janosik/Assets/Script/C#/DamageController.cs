@@ -44,7 +44,7 @@ namespace Com.ZiomakiStudios.Janosik{
             m_Animator.SetFloat(finAtkVHash, atkDir.z);
             m_Animator.SetTrigger(isDyingHash);
             DropItem.DropingItem(gameObject, m_playerCont.gunLoc);
-            Debug.Log($"Headshot:{isHeadShot}, normal direction (x, z) : ({atkDir.x}, {atkDir.z}).");
+            //Debug.Log($"Headshot:{isHeadShot}, normal direction (x, z) : ({atkDir.x}, {atkDir.z}).");
             yield return new WaitForSeconds(5.0f);
             gameObject.SetActive(false);
         }

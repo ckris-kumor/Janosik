@@ -39,14 +39,23 @@ namespace Com.ZiomakiStudios.Janosik{
             isAimingHash = Animator.StringToHash("isAiming");
             
         }
+ 
         void Update(){
             ///<summary>
             ///Shooting a Raycast in the -y dir originating from the bottom of the feet.
             ///The ray will only go minDist and when it hits the ground it will set isGrounded to true.
             ///Once we know if the ray has hit the ground we will notify the animator component.
             ///</summary>
+
             RayOrigin = new Vector3(m_characterController.bounds.center.x, m_characterController.bounds.min.y, m_characterController.bounds.center.z);
             isGrounded = Physics.Raycast(new Ray(RayOrigin, Vector3.down), out hit, minDist);
+            
+            /*Vector3 p1 = transform.position + m_characterController.center;
+            Vector3 p2 = p1;
+            p1.y += m_characterController.height;
+            p2.y -= m_characterController.height;
+            isGrounded = Physics.CapsuleCast(p1, p2, m_characterController.radius, -transform.up, out hit, minDist, LayerMask.GetMask("Terrain"));*/
+
             m_animator.SetBool(isGroundedHash, isGrounded);
             //If we are going moving forward/backward notify the animator what dir
             m_animator.SetFloat(verticalHash, Input.GetAxis("Vertical") *(Input.GetButton("Run")?2.00f:1.00f));

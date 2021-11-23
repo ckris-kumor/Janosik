@@ -59,6 +59,7 @@ namespace Com.ZiomakiStudios.Janosik{
             //Firing raycast through middle of screen , ideally crosshair ui should be at the same position on the player camera's vewport
             rayOrigin = m_Camera.ViewportToWorldPoint(new Vector3(0.5f,0.5f,0.0f));
             if(Physics.Raycast(rayOrigin, m_Camera.transform.forward.normalized, out hit)){
+                Debug.Log($"The player is looking at {hit.transform.name}");
                 //If the obj in our LOS is an enemy player and not our player potentially blocking our LOS
                 if(hit.transform.CompareTag(enemyTag) && hit.transform.gameObject != gameObject){
                     enemyHealthBar.SetActive(true);

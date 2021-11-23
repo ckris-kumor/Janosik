@@ -29,7 +29,7 @@ ModelImporter:
     importConstraints: 0
     animationCompression: 3
     animationRotationError: 0.5
-    animationPositionError: 0.5
+    animationPositionError: 0.75
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
@@ -50,7 +50,7 @@ ModelImporter:
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
-      loopBlendPositionY: 0
+      loopBlendPositionY: 1
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 1
       keepOriginalPositionY: 1

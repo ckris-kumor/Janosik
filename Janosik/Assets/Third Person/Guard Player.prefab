@@ -96,8 +96,8 @@ MonoBehaviour:
   gravityVal: -9.8
   minDist: 0.1
   playerYVelocity: 0
-  runningSpeed: 7
-  walkingSpeed: 3
+  runningSpeed: 8
+  walkingSpeed: 4
   lookSensitivity: 50
   playerGun: {fileID: 6955626481404396618}
   isGrounded: 0
