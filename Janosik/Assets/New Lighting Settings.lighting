@@ -52,7 +52,7 @@ LightingSettings:
   m_PVRDenoiserTypeDirect: 1
   m_PVRDenoiserTypeIndirect: 1
   m_PVRDenoiserTypeAO: 1
-  m_PVRFilterTypeDirect: 0
+  m_PVRFilterTypeDirect: 1
   m_PVRFilterTypeIndirect: 0
   m_PVRFilterTypeAO: 0
   m_PVRFilteringGaussRadiusDirect: 5

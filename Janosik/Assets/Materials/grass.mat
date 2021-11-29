@@ -273,5 +273,13 @@ Material:
     - _UVDetailsMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMaskEmissive: {r: 1, g: 0, b: 0, a: 0}
+<<<<<<< Updated upstream
     - _playerPos: {r: 16.03216, g: 3.6807752, b: 22.832132, a: 0}
+=======
+<<<<<<< HEAD
+    - _playerPos: {r: 34.360405, g: 3.7373977, b: 26.131908, a: 0}
+=======
+    - _playerPos: {r: 16.03216, g: 3.6807752, b: 22.832132, a: 0}
+>>>>>>> d377d19099580dd19fbd61839a4645cdb64fdb8d
+>>>>>>> Stashed changes
   m_BuildTextureStacks: []

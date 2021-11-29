@@ -48,8 +48,16 @@ namespace Com.ZiomakiStudios.Janosik{
                 /// If said condition above is true and the players has fired the gun consider it a hit and
                 /// fire off appropriate action 
                 ///</summary>
+<<<<<<< HEAD
+                rayOrigin = muzzleTransform.position;
+                //rayOrigin = playerCam.ViewportToWorldPoint(new Vector3(0.5f,0.5f,0.0f));
+=======
                 rayOrigin = playerCam.ViewportToWorldPoint(new Vector3(0.5f,0.5f,0.0f));
                 //rayOrigin = muzzleTransform.position;
+<<<<<<< Updated upstream
+=======
+>>>>>>> d377d19099580dd19fbd61839a4645cdb64fdb8d
+>>>>>>> Stashed changes
                 Debug.DrawRay(rayOrigin, playerCam.transform.forward.normalized*weaponRange, Color.red);
                 if(Physics.Raycast(rayOrigin, playerCam.transform.forward.normalized, out hit, weaponRange)){
                     DamageController targetDmgCont = hit.transform.GetComponent<DamageController>();

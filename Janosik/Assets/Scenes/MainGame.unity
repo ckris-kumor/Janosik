@@ -429,7 +429,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 507677910}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< Updated upstream
   m_LocalPosition: {x: 2.982, y: 10, z: 21.81}
+=======
+<<<<<<< HEAD
+  m_LocalPosition: {x: 2.982, y: 3.654, z: 15.18}
+=======
+  m_LocalPosition: {x: 2.982, y: 10, z: 21.81}
+>>>>>>> d377d19099580dd19fbd61839a4645cdb64fdb8d
+>>>>>>> Stashed changes
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -720,7 +728,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a68c43fe1f2a47cfa234b5eeaa98012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
   m_Intensity: 750
+=======
+<<<<<<< HEAD
+  m_Intensity: 1000
+=======
+  m_Intensity: 750
+>>>>>>> d377d19099580dd19fbd61839a4645cdb64fdb8d
+>>>>>>> Stashed changes
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
@@ -842,7 +858,15 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+<<<<<<< Updated upstream
   m_Intensity: 750
+=======
+<<<<<<< HEAD
+  m_Intensity: 1000
+=======
+  m_Intensity: 750
+>>>>>>> d377d19099580dd19fbd61839a4645cdb64fdb8d
+>>>>>>> Stashed changes
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -885,7 +909,15 @@ Light:
   m_LightShadowCasterMode: 2
   m_AreaSize: {x: 0.5, y: 0.5}
   m_BounceIntensity: 1
+<<<<<<< Updated upstream
   m_ColorTemperature: 5394
+=======
+<<<<<<< HEAD
+  m_ColorTemperature: 6122
+=======
+  m_ColorTemperature: 5394
+>>>>>>> d377d19099580dd19fbd61839a4645cdb64fdb8d
+>>>>>>> Stashed changes
   m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 4.5905e-41, y: 0, z: 0, w: 1.6114932e-38}
   m_UseBoundingSphereOverride: 0
