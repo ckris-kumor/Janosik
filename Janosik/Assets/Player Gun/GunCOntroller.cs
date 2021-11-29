@@ -55,6 +55,10 @@ namespace Com.ZiomakiStudios.Janosik{
                 rayOrigin = playerCam.ViewportToWorldPoint(new Vector3(0.5f,0.5f,0.0f));
                 //rayOrigin = muzzleTransform.position;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+>>>>>>> d377d19099580dd19fbd61839a4645cdb64fdb8d
+>>>>>>> Stashed changes
 =======
 >>>>>>> d377d19099580dd19fbd61839a4645cdb64fdb8d
 >>>>>>> Stashed changes

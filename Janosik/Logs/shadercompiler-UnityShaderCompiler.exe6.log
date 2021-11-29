@@ -1,5 +1,8 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 <<<<<<< HEAD
 Base path: 'C:/Program Files/Unity/Hub/Editor/2021.2.2f1/Editor/Data', plugins path 'C:/Program Files/Unity/Hub/Editor/2021.2.2f1/Editor/Data/PlaybackEngines'
 Cmd: initializeCompiler
@@ -11,6 +14,9 @@ Cmd: shutdown
 
 Quitting shader compiler process
 =======
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 Base path: 'C:/Program Files/Unity/Hub/Editor/2021.2.3f1/Editor/Data', plugins path 'C:/Program Files/Unity/Hub/Editor/2021.2.3f1/Editor/Data/PlaybackEngines'
 Cmd: initializeCompiler
@@ -20,6 +26,10 @@ Cmd: compileSnippet
 
 Cmd: shutdown
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+>>>>>>> d377d19099580dd19fbd61839a4645cdb64fdb8d
+>>>>>>> Stashed changes
 =======
 >>>>>>> d377d19099580dd19fbd61839a4645cdb64fdb8d
 >>>>>>> Stashed changes
