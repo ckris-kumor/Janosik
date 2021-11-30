@@ -7,9 +7,9 @@ TerrainLayer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Mine Rock Wall
-  m_DiffuseTexture: {fileID: 2800000, guid: 7e3efdb6acf4d214faf2100472e32bda, type: 3}
-  m_NormalMapTexture: {fileID: 2800000, guid: 283d44fcdcc44e04fb92d7fb55cc1bf9, type: 3}
-  m_MaskMapTexture: {fileID: 2800000, guid: f77dd6360add07d44a7d87f912c542f8, type: 3}
+  m_DiffuseTexture: {fileID: 2800000, guid: 3a84674e6fe8aa64fac0cbcd7cd8a587, type: 3}
+  m_NormalMapTexture: {fileID: 2800000, guid: a2744562d41c98047a8a624e7894891e, type: 3}
+  m_MaskMapTexture: {fileID: 2800000, guid: 912e9aeb69b07364c9f026cb8bdf3d9c, type: 3}
   m_TileSize: {x: 5, y: 5}
   m_TileOffset: {x: 2.67, y: -1.67}
   m_Specular: {r: 0, g: 0, b: 0, a: 0}

@@ -7,9 +7,9 @@ TerrainLayer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Crocked Mossy
-  m_DiffuseTexture: {fileID: 2800000, guid: 6a4aa59d68192964e91df32f69efe6a7, type: 3}
-  m_NormalMapTexture: {fileID: 2800000, guid: 1aff27d7f10557f429a578f21d6112b3, type: 3}
-  m_MaskMapTexture: {fileID: 2800000, guid: 029cba5625f8ca84d9f00a209f705546, type: 3}
+  m_DiffuseTexture: {fileID: 2800000, guid: cd47cfc5962dc7f448fdb9ffc1f20784, type: 3}
+  m_NormalMapTexture: {fileID: 2800000, guid: f4377f54829892943b098df650ecfb00, type: 3}
+  m_MaskMapTexture: {fileID: 2800000, guid: 08b5ee0020638ad4f86c8be9ffe4e491, type: 3}
   m_TileSize: {x: 30, y: 40}
   m_TileOffset: {x: -26.19, y: 2.28}
   m_Specular: {r: 0, g: 0, b: 0, a: 0}

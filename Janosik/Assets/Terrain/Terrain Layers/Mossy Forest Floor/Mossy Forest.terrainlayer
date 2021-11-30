@@ -7,9 +7,9 @@ TerrainLayer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Mossy Forest
-  m_DiffuseTexture: {fileID: 2800000, guid: 4a5c71187c87e9246b386b1519a91670, type: 3}
-  m_NormalMapTexture: {fileID: 2800000, guid: 3ef826b19ac2f2e4684cfb07aea8060d, type: 3}
-  m_MaskMapTexture: {fileID: 2800000, guid: 8dc8b226b461a4742bf360fa5247152f, type: 3}
+  m_DiffuseTexture: {fileID: 2800000, guid: 7d3cc880d74b9e244aa3a4e814eb93f6, type: 3}
+  m_NormalMapTexture: {fileID: 2800000, guid: 5191839714c908242987d57ca601b6b2, type: 3}
+  m_MaskMapTexture: {fileID: 2800000, guid: dd78fcb874c6cb649ba60f3d383003b0, type: 3}
   m_TileSize: {x: 30, y: 25}
   m_TileOffset: {x: 5, y: 2}
   m_Specular: {r: 0, g: 0, b: 0, a: 0}

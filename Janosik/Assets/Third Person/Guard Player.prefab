@@ -30,24 +30,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6854745717666473122}
   m_LocalRotation: {x: 0, y: 0.018918216, z: 0, w: 0.999821}
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
   m_LocalPosition: {x: 15.29, y: 0, z: 19.37}
   m_LocalScale: {x: 3, y: 3, z: 3}
-=======
-=======
->>>>>>> Stashed changes
-<<<<<<< HEAD
-  m_LocalPosition: {x: 15.29, y: 0, z: 21}
-  m_LocalScale: {x: 2, y: 2, z: 2}
-=======
-  m_LocalPosition: {x: 15.29, y: 0, z: 19.37}
-  m_LocalScale: {x: 3, y: 3, z: 3}
->>>>>>> d377d19099580dd19fbd61839a4645cdb64fdb8d
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4262753207200808111}
@@ -702,21 +686,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5230158364346508050, guid: 1c0e28967a7b6154e8836b2045854393, type: 3}
       propertyPath: m_LocalPosition.y
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
       value: 2.202
-=======
-=======
->>>>>>> Stashed changes
-<<<<<<< HEAD
-      value: 2.1
-=======
-      value: 2.202
->>>>>>> d377d19099580dd19fbd61839a4645cdb64fdb8d
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 5230158364346508050, guid: 1c0e28967a7b6154e8836b2045854393, type: 3}
       propertyPath: m_LocalPosition.z
