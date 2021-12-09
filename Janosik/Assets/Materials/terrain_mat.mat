@@ -50,7 +50,6 @@ Material:
   - RayTracingPrepass
   - TransparentDepthPrepass
   - TransparentDepthPostpass
-  - DistortionVectors
   - MOTIONVECTORS
   m_SavedProperties:
     serializedVersion: 3
@@ -68,6 +67,18 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AnisotropyMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Base2ColorMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Base2MaskMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Base2NormalMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -92,6 +103,14 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BaseMaskMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BaseNormalMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -144,6 +163,18 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Control:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CoverBaseColorMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CoverMaskMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CoverNormalMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -224,6 +255,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _LayerInfluenceMaskMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _LayerMask:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -481,6 +516,22 @@ Material:
     - _AlphaToMaskInspectorValue: 0
     - _Anisotropy: 0
     - _BakedMeshData: 0
+    - _Base2AORemapMax: 1
+    - _Base2AORemapMin: 0
+    - _Base2Metallic: 1
+    - _Base2NormalScale: 1
+    - _Base2SmoothnessRemapMax: 1
+    - _Base2SmoothnessRemapMin: 0
+    - _Base2TriplanarThreshold: 5
+    - _Base2UsePlanarUV: 0
+    - _BaseAORemapMax: 1
+    - _BaseAORemapMin: 0
+    - _BaseMetallic: 1
+    - _BaseNormalScale: 1
+    - _BaseSmoothnessRemapMax: 1
+    - _BaseSmoothnessRemapMin: 0
+    - _BaseTriplanarThreshold: 5
+    - _BaseUsePlanarUV: 0
     - _Blend: 0
     - _BlendMode: 0
     - _BumpScale: 1
@@ -489,6 +540,25 @@ Material:
     - _CoatMask: 0
     - _ColorCorrection: 0
     - _ColorVariationSpread: 0.2
+    - _ConservativeDepthOffsetEnable: 0
+    - _CoverAORemapMax: 1
+    - _CoverAORemapMin: 0
+    - _CoverHardness: 5
+    - _CoverHeightMapMax: 1
+    - _CoverHeightMapMin: 0
+    - _CoverHeightMapOffset: 0
+    - _CoverMaskPower: 1
+    - _CoverMetallic: 1
+    - _CoverNormalBlendHardness: 1
+    - _CoverNormalScale: 1
+    - _CoverSmoothnessRemapMax: 1
+    - _CoverSmoothnessRemapMin: 0
+    - _CoverTriplanarThreshold: 5
+    - _Cover_Amount: 0
+    - _Cover_Amount_Grow_Speed: 3
+    - _Cover_Max_Angle: 35
+    - _Cover_Min_Height: -10000
+    - _Cover_Min_Height_Blending: 1
     - _Cull: 2
     - _CullMode: 2
     - _CullModeForward: 2
@@ -602,6 +672,7 @@ Material:
     - _HeightTessCenter2: 0.5
     - _HeightTessCenter3: 0.5
     - _HeightTransition: 0.661
+    - _Height_Transition: 1
     - _InheritBaseColor1: 0
     - _InheritBaseColor2: 0
     - _InheritBaseColor3: 0
@@ -620,6 +691,7 @@ Material:
     - _InvTilingScale1: 1
     - _InvTilingScale2: 1
     - _InvTilingScale3: 1
+    - _Invert_Layer_Mask: 0
     - _Ior: 1.5
     - _IridescenceMask: 1
     - _IridescenceThickness: 1
@@ -684,6 +756,8 @@ Material:
     - _ReceivesSSR: 1
     - _ReceivesSSRTransparent: 0
     - _RefractionModel: 0
+    - _RenderQueueType: 1
+    - _RequireSplitLighting: 0
     - _SampleAlphaOverlay: 1
     - _SampleColorOverlay: 1
     - _Smoothness: 0.5
@@ -711,7 +785,7 @@ Material:
     - _StencilRefDepth: 8
     - _StencilRefDistortionVec: 4
     - _StencilRefGBuffer: 10
-    - _StencilRefMV: 32
+    - _StencilRefMV: 40
     - _StencilWriteMask: 6
     - _StencilWriteMaskDepth: 8
     - _StencilWriteMaskDistortionVec: 4
@@ -756,6 +830,7 @@ Material:
     - _TransparentWritingMotionVec: 0
     - _TransparentZWrite: 0
     - _TurbulenceStrength: 1
+    - _USEDYNAMICCOVERTSTATICMASKF: 1
     - _UVBase: 0
     - _UVBase0: 0
     - _UVBase1: 0
@@ -775,6 +850,7 @@ Material:
     - _UseShadowThreshold: 0
     - _VertexColorMode: 0
     - _VertexNormalStrength: 1
+    - _WetSmoothness: 1
     - _Wind: 1
     - _WindStrength: 1
     - _WindVariation: 0.3
@@ -786,6 +862,8 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - Color_DF96D22A: {r: 0, g: 0, b: 0, a: 0}
+    - _Base2Color: {r: 1, g: 1, b: 1, a: 0}
+    - _Base2TilingOffset: {r: 1, g: 1, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColor0: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColor1: {r: 1, g: 1, b: 1, a: 1}
@@ -793,7 +871,11 @@ Material:
     - _BaseColor3: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap0_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
+    - _BaseTilingOffset: {r: 1, g: 1, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _CoverBaseColor: {r: 1, g: 1, b: 1, a: 0}
+    - _CoverDirection: {r: 0, g: 1, b: 0, a: 0}
+    - _CoverTilingOffset: {r: 1, g: 1, b: 0, a: 0}
     - _DiffusionProfileAsset: {r: 2.2888926e+38, g: 1.2389358e-26, b: 7.69327e-37, a: 0.00018220427}
     - _DiffusionProfileAsset0: {r: 0, g: 0, b: 0, a: 0}
     - _DiffusionProfileAsset1: {r: 0, g: 0, b: 0, a: 0}
@@ -833,6 +915,7 @@ Material:
     - _UVMappingMask3: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMaskBlendMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMaskEmissive: {r: 1, g: 0, b: 0, a: 0}
+    - _WetColor: {r: 0.7735849, g: 0.7735849, b: 0.7735849, a: 0}
     - _WindFade: {r: 50, g: 20, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &8899615093660904302

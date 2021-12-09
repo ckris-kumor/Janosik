@@ -273,5 +273,5 @@ Material:
     - _UVDetailsMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMaskEmissive: {r: 1, g: 0, b: 0, a: 0}
-    - _playerPos: {r: 47.728542, g: 3.0430274, b: 47.720516, a: 0}
+    - _playerPos: {r: 174.24017, g: 27.193113, b: 15.099405, a: 0}
   m_BuildTextureStacks: []
